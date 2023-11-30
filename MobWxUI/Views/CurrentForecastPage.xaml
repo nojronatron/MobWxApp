@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobWxUI.Views.CurrentForecastPage"
+             MaximumHeightRequest="600"
+             MaximumWidthRequest="428"
+             >
+    
+    
+    <VerticalStackLayout>
+        <Grid Margin="8"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+              ColumnDefinitions="4, Auto, 20, Auto, 4">
+            <!-- Right Now Content -->
+            <Label Text="{Binding ForecastLocation}"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3" />
+            <Image Grid.Row="1"
+                    Grid.Column="1"
+                    Source="{Binding ConditionIcon}"
+                    HeightRequest="86"/>
+            <Image Grid.Row="1"
+                    Grid.Column="3"
+                    Source="{Binding DefaultAlertIcon}"
+                    HeightRequest="86" />
+            <!-- Right Now -->
+            <!-- Current Conditions Content -->
+            <Label  Text="{Binding RightNow}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3" />
+            <Label Text="{Binding ForecastName}"
+                   Padding="20"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5" />
+            
+            <!-- Detailed conditions -->
+            <Label Text="{Binding DetailedConditionsText}" 
+                   FontSize="Small"
+                   TextColor="Black"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Row="4"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   LineBreakMode="WordWrap"
+                   MaximumWidthRequest="400"
+                   />
+            <!-- End Detailed conditions -->
+
+            <Label Text="Temperature" 
+                   FontSize="Medium"
+                   HorizontalOptions="End"
+                   Grid.Row="5"
+                   Grid.Column="1"/>
+            <Label Text="{Binding TempAndUnit}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="5"
+                    Grid.Column="3"/>
+            <Label Text="Humidity" 
+                   FontSize="Medium"
+                   HorizontalOptions="End"
+                   Grid.Row="6"
+                   Grid.Column="1"/>
+            <Label Text="{Binding Rh}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="6"
+                    Grid.Column="3"/>
+            <Label Text="Dewpoint"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   Grid.Row="7"
+                   Grid.Column="1"/>
+            <Label Text="{Binding Dew}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="7"
+                    Grid.Column="3"/>
+            <Label Text="Chance of Precip" 
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   Grid.Row="8"
+                   Grid.Column="1"/>
+            <Label Text="{Binding PoP}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="8"
+                    Grid.Column="3"/>
+            <Label Text="Winds"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   Grid.Row="9"
+                   Grid.Column="1"/>
+            <Label Text="{Binding WindSpeedAndDirection}"
+                    FontSize="Medium"
+                    TextColor="Black"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="9"
+                    Grid.Column="3"/>
+            <!-- End Current Conditions -->
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
