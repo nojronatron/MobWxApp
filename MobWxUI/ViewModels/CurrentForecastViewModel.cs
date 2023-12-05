@@ -7,40 +7,41 @@ namespace MobWxUI.ViewModels
 {
     public class CurrentForecastViewModel : ObservableObject
     {
+		const string DefaultStringData = "N/A";
 		private readonly CurrentForecastCollection _currentForecastCollection;
 		private readonly IUserSettingsParams _userSettingsParams;
         
-		private string _rightNow;
+		private string _rightNow = DefaultStringData;
 		public string RightNow
 		{
 			get { return _rightNow; }
 			set { _rightNow = value; }
 		}
-		private string _tempAndUnit;
+		private string _tempAndUnit = DefaultStringData;
 		public string TempAndUnit
 		{
 			get { return _tempAndUnit; }
 			set { _tempAndUnit = value; }
 		}
-		private string _rh;
+		private string _rh = DefaultStringData;
 		public string Rh
 		{
 			get { return _rh; }
 			set { _rh = value; }
 		}
-		private string _dew;
+		private string _dew = DefaultStringData;
 		public string Dew
 		{
 			get { return _dew; }
 			set { _dew = value; }
 		}
-		private string _pop;
+		private string _pop = DefaultStringData;
 		public string PoP
 		{
 			get { return _pop; }
 			set { _pop = value; }
 		}
-		private string _windSpeedAndDirection;
+		private string _windSpeedAndDirection = DefaultStringData;
 		public string WindSpeedAndDirection
 		{
 			get { return _windSpeedAndDirection; }
@@ -54,19 +55,19 @@ namespace MobWxUI.ViewModels
 			get => _detailedConditionsIsClosed;
 			set => SetProperty(ref _detailedConditionsIsClosed, value);
 		}
-        private string _detailedConditionsHeader;
+        private string _detailedConditionsHeader = DefaultStringData;
 		public string DetailedConditionsHeader
 		{
 			get => _detailedConditionsHeader;
 			set => SetProperty(ref _detailedConditionsHeader, value);
 		}
-		private string _detailedConditionsText;
+		private string _detailedConditionsText = DefaultStringData;
 		public string DetailedConditionsText
 		{
 			get => _detailedConditionsText;
 			set => SetProperty(ref _detailedConditionsText, value);
 		}
-		private string _conditionIcon;
+		private string _conditionIcon = string.Empty;
 		public string ConditionIcon
 		{
 			get => _conditionIcon;
@@ -94,11 +95,11 @@ namespace MobWxUI.ViewModels
 			CurrentForecastCollection currentForecastCollection,
 			IUserSettingsParams userSettingsParams)
 		{
-			_currentForecastCollection = currentForecastCollection;
-			int latestForecastIdx = _currentForecastCollection.GetIndexOfLatestForecastData();
-			LatestForecast = _currentForecastCollection[latestForecastIdx].Periods[0];
-			_userSettingsParams = userSettingsParams;
-
+            _userSettingsParams = userSettingsParams;
+            _currentForecastCollection = currentForecastCollection;
+            _currentForecastCollection.Add(_userSettingsParams.CurrentForecast);
+            LatestForecast = _currentForecastCollection.GetLatestForecast();
+			
 			RightNow = LatestForecast.ShortForecast;
 			TempAndUnit = LatestForecast.Temp;
 			Rh = LatestForecast.RelativeHumidity!.ToString();

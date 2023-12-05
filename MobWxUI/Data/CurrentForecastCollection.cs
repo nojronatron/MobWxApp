@@ -46,9 +46,8 @@ namespace MobWxUI.Data
         //}
         public int GetIndexOfLatestForecastData()
         {
-            // todo: ensure the collection is not empty
-            // todo: decide on what will happen if it is
-            // todo: update calling methods to handle the empty collection situation
+            // todo: determine if a Collection is really necessary
+            // todo: enture calling methods handle an empty collection
             int index = 0;
             foreach (IForecastResponseModel forecastResponseModel in Items)
             {
@@ -58,6 +57,11 @@ namespace MobWxUI.Data
                 }
             }
             return index;
+        }
+        public Period GetLatestForecast()
+        {
+            int index = GetIndexOfLatestForecastData();
+            return Items[index].Periods[0];
         }
     }
 }

@@ -8,7 +8,12 @@ namespace MobWxUI.Helpers
         string CoordinatesFrom { get; set; }
         ForecastResponseModel CurrentForecast { get; set; }
         PointsResponseModel PointsResponse { get; set; }
+        bool HasCoordinates { get; }
+        bool HasPointsResponse { get; }
+        bool HasForecastResponse { get; }
 
         void AddCoordinates(string latitude, string longitude);
+        void AddCoordinates(ICoordinateModel coordinates);
+        void AddCoordinates(Location? location);
     }
 }

@@ -8,17 +8,18 @@ namespace MobWxUI.Helpers
     {
         private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-        public static PointsResponseModel ProcessPointsResponse(string jsonPointsResponse)
+        public static PointsResponseModel? ProcessPointsResponse(string jsonPointsResponse)
         {
-            if (string.IsNullOrWhiteSpace (jsonPointsResponse))
+            if (string.IsNullOrWhiteSpace(jsonPointsResponse))
             {
-                throw new ArgumentNullException(nameof(jsonPointsResponse), "Arugment cannot be null or white space.");
+                return null;
+                //throw new ArgumentNullException(nameof(jsonPointsResponse), "Arugment cannot be null or white space.");
             }
 
             try
             {
-                PointsResponseModel? result = JsonSerializer.Deserialize<PointsResponseModel>(jsonPointsResponse, _jsonOptions);
-                return result ?? throw new Exception("Unable to deserialize the Json points response.");
+                return JsonSerializer.Deserialize<PointsResponseModel?>(jsonPointsResponse, _jsonOptions);
+                //return result ?? throw new Exception("Unable to deserialize the Json points response.");
             }
             catch (Exception ex)
             {
@@ -27,17 +28,18 @@ namespace MobWxUI.Helpers
             }
         }
 
-        public static ForecastResponseModel ProcessForecastResponse(string jsonForecastResponse)
+        public static ForecastResponseModel? ProcessForecastResponse(string jsonForecastResponse)
         {
             if (string.IsNullOrWhiteSpace(jsonForecastResponse))
             {
-                throw new ArgumentNullException(nameof(jsonForecastResponse), "Argument cannot be null or empty.");
+                return null;
+                //throw new ArgumentNullException(nameof(jsonForecastResponse), "Argument cannot be null or empty.");
             }
 
             try
             {
-                ForecastResponseModel? result = JsonSerializer.Deserialize<ForecastResponseModel>(jsonForecastResponse, _jsonOptions);
-                return result ?? throw new Exception("Unable to deserialize the Json points response.");
+                return JsonSerializer.Deserialize<ForecastResponseModel?>(jsonForecastResponse, _jsonOptions);
+                //return result ?? throw new Exception("Unable to deserialize the Json points response.");
             }
             catch (Exception ex)
             {

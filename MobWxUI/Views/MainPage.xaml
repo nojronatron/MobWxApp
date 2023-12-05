@@ -4,28 +4,12 @@
              x:Class="MobWxUI.Views.MainPage"
              xmlns:viewModels="clr-namespace:MobWxUI.ViewModels"
              >
-    
-    <VerticalStackLayout Spacing="10"
-                         Margin="5">
-        <Label Text="Enter your location coordinates"
-               FontSize="Medium"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               Margin="10"
+
+    <VerticalStackLayout>
+            <Image Source="hawaii_054_medium.png"
+               Aspect="AspectFit"
+               HeightRequest="720"
                />
-        <Editor Placeholder="Example: 45.6789,-122.3456"
-                Text="{Binding LatLonEntry}"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                MinimumWidthRequest="250"
-                Margin="10"
-                />
-        <Button Text="Get Local Forecast"
-                HorizontalOptions="Center"
-                Margin="10"
-                Command="{Binding LatLonEntryCommand}"
-                />
-
     </VerticalStackLayout>
-
+    
 </ContentPage>
