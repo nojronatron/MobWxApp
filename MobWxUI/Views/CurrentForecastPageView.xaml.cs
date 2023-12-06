@@ -2,9 +2,9 @@ using MobWxUI.ViewModels;
 
 namespace MobWxUI.Views;
 
-public partial class CurrentForecastPage : ContentPage
+public partial class CurrentForecastPageView : ContentPage
 {
-    public CurrentForecastPage(CurrentForecastViewModel currentForecastViewModel)
+    public CurrentForecastPageView(CurrentForecastViewModel currentForecastViewModel)
 	{
         BindingContext = currentForecastViewModel;
         InitializeComponent();

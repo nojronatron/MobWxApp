@@ -9,6 +9,10 @@ namespace MobWxUI.Helpers
         public PointsResponseModel PointsResponse { get; set; }
         public ForecastResponseModel CurrentForecast { get; set; }
 
+        public bool HasCoordinates => !Coordinates.IsEmpty;
+        public bool HasPointsResponse => PointsResponse.Cwa != null;
+        public bool HasForecastResponse => !string.IsNullOrWhiteSpace(CurrentForecast.Updated);
+
         public UserSettingsParams()
         {
             CoordinatesFrom = "n/a";
@@ -20,6 +24,16 @@ namespace MobWxUI.Helpers
         {
             Coordinates.SetLatitude(latitude);
             Coordinates.SetLongitude(longitude);
+        }
+
+        public void AddCoordinates(Location? location)
+        {
+            Coordinates.SetCoordinates(location);
+        }
+
+        public void AddCoordinates(ICoordinateModel coordinates)
+        {
+            Coordinates = coordinates;
         }
     }
 }

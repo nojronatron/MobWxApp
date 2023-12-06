@@ -21,10 +21,12 @@ namespace MobWxUI
 
             // views
             builder.Services.AddTransient<Views.MainPage>();
-            builder.Services.AddTransient<Views.CurrentForecastPage>();
+            builder.Services.AddTransient<Views.SetLocationPageView>();
+            builder.Services.AddTransient<Views.CurrentForecastPageView>();
 
             // viewModels
             builder.Services.AddTransient<ViewModels.MainPageViewModel>();
+            builder.Services.AddTransient<ViewModels.SetLocationViewModel>();
             builder.Services.AddTransient<ViewModels.CurrentForecastViewModel>();
 
             // collections
