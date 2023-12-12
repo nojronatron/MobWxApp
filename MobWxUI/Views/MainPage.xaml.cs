@@ -34,6 +34,7 @@ namespace MobWxUI.Views
 
 #if ANDROID
             // todo: move this logic to a dedicated class
+            // todo: include any fix that enables capturing an ImageUrl Stream from the API
             Location? lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
             _userSettingsParams.AddCoordinates(lastKnownLocation);
 
