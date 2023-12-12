@@ -1,5 +1,4 @@
 ﻿using MobWxUI.Models;
-using System.Diagnostics;
 
 namespace MobWxUI.Helpers
 {
@@ -18,7 +17,6 @@ namespace MobWxUI.Helpers
 
         public async Task<string> GetPointsAsync(ICoordinateModel coordinates)
         {
-            Debug.WriteLine($"GetPointsAsync method: Entered method.");
             string result = string.Empty;
             string pointsUrl = _baseUrl + "points/" + coordinates;
             Uri pointsBaseUri = new Uri(_baseUrl);
@@ -33,17 +31,16 @@ namespace MobWxUI.Helpers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine($"ApiHelper GetPointsAsync response is Success Status Code.");
                     result = await response.Content.ReadAsStringAsync();
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"HttpClient encountered an error calling {pointsUri}: {ex.Message}");
+                // todo: log this exception
 
                 if (ex.InnerException != null)
                 {
-                    Debug.WriteLine($"Here is the inner exception: {ex.InnerException.Message}");
+                    // todo: log this exception
                 }
             }
 
@@ -75,11 +72,10 @@ namespace MobWxUI.Helpers
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"HttpClient encountered an error calling {forecast}: {ex.Message}");
-
+                // todo: log this exception
                 if (ex.InnerException != null)
                 {
-                    Debug.WriteLine($"Here is the inner exception: {ex.InnerException.Message}");
+                    // todo: log this exception
                 }
             }
 
