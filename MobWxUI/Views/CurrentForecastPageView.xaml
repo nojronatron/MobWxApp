@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MobWxUI.Views.CurrentForecastPageView"
+             xmlns:views="clr-namespace:MobWxUI.Views"
+             xmlns:vm="clr-namespace:MobWxUI.ViewModels"
+             x:TypeArguments="vm:CurrentForecastViewModel"
+             x:DataType="vm:CurrentForecastViewModel"
              >
+
+    <views:BaseView.Resources>
+        <ResourceDictionary>
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter"></mct:ByteArrayToImageSourceConverter>
+        </ResourceDictionary>
+    </views:BaseView.Resources>
     
     <VerticalStackLayout>
         <Grid Margin="8"
@@ -22,7 +33,9 @@
                    />
             <Image Grid.Row="1"
                     Grid.Column="1"
-                    Source="{Binding ConditionIcon}"
+                    Source="{Binding WxImageByteArray,
+                        Mode=OneWay,
+                        Converter={StaticResource ByteArrayToImageSourceConverter}}"
                     HeightRequest="86"
                    />
             <Image Grid.Row="1"
@@ -157,4 +170,4 @@
 
         </Grid>
     </VerticalStackLayout>
-</ContentPage>
+</views:BaseView>
