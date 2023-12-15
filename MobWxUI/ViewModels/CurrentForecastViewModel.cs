@@ -2,12 +2,69 @@
 using MobWxUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MobWxUI.Helpers;
+using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
-    public class CurrentForecastViewModel : ObservableObject
+    public partial class CurrentForecastViewModel : BaseViewModel, IDisposable
     {
-		const string DefaultStringData = "N/A";
+		#region Code source: CommunityToolkit Maui Sample ViewModels Converters ByteArrayToImageSourceConverterViewModel.cs
+		readonly WeakEventManager imageDownloadFailedEventManager = new();
+		readonly IApiHelper _apiHelper;
+		[ObservableProperty, NotifyCanExecuteChangedFor(nameof(DownloadWxImageCommand))]
+		bool isDownloadingImage;
+		[ObservableProperty]
+		byte[]? wxImageByteArray;
+		bool CanDownloadWxImageCommandExecute => !IsDownloadingImage && WxImageByteArray is null;
+		[RelayCommand(CanExecute = nameof(CanDownloadWxImageCommandExecute))]
+		async Task DownloadWxImage(CancellationToken token)
+		{
+			IsDownloadingImage = true;
+			var maximumDownloadTime = TimeSpan.FromSeconds(5);
+			var maximumDownloadTimeCTS = new CancellationTokenSource(maximumDownloadTime);
+			var minimumDownloadTime = TimeSpan.FromSeconds(1.5);
+			var minimumDownloadTimeTask = Task
+				.Delay(minimumDownloadTime, maximumDownloadTimeCTS.Token)
+				.WaitAsync(token);
+
+			try
+			{
+				var GetImageClient = _apiHelper.Apihelper;
+				GetImageClient.DefaultRequestHeaders.Clear();
+				GetImageClient.DefaultRequestHeaders.Add("Accept", "image/png");
+				GetImageClient.DefaultRequestHeaders.Add("User-Agent", "(exploring,jonrumsey.dev@gmail.com)");
+				WxImageByteArray = await GetImageClient
+					.GetByteArrayAsync(ConditionIcon, maximumDownloadTimeCTS.Token)
+					.WaitAsync(token)
+					.ConfigureAwait(false);
+				await minimumDownloadTimeTask.ConfigureAwait(false);
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine(ex);
+				OnImageDownloadFailed(ex.Message);
+			}
+			finally
+			{
+				IsDownloadingImage = false;
+			}
+		}
+		void OnImageDownloadFailed(in string message) =>
+			imageDownloadFailedEventManager.HandleEvent(this, message, nameof(ImageDownloadFailed));
+
+        public event EventHandler<string> ImageDownloadFailed
+        {
+            add => imageDownloadFailedEventManager.AddEventHandler(value);
+            remove => imageDownloadFailedEventManager.RemoveEventHandler(value);
+        }
+        public void Dispose()
+        {
+            WxImageByteArray = null;
+        }
+        #endregion 
+
+        const string DefaultStringData = "N/A";
 		private readonly CurrentForecastCollection _currentForecastCollection;
 		private readonly IUserSettingsParams _userSettingsParams;
         
@@ -92,14 +149,17 @@ namespace MobWxUI.ViewModels
         }
 
 		public CurrentForecastViewModel(
+			IApiHelper apiHelper,
 			CurrentForecastCollection currentForecastCollection,
 			IUserSettingsParams userSettingsParams)
 		{
+            _apiHelper = apiHelper;
             _userSettingsParams = userSettingsParams;
             _currentForecastCollection = currentForecastCollection;
             _currentForecastCollection.Add(_userSettingsParams.CurrentForecast);
             LatestForecast = _currentForecastCollection.GetLatestForecast();
-			
+
+			ConditionIcon = LatestForecast.Icon;
 			RightNow = LatestForecast.ShortForecast;
 			TempAndUnit = LatestForecast.Temp;
 			Rh = LatestForecast.RelativeHumidity!.ToString();
@@ -107,7 +167,6 @@ namespace MobWxUI.ViewModels
 			PoP = LatestForecast.ProbabilityOfPrecipitation!.ToString();
 			WindSpeedAndDirection = LatestForecast.Winds;
 			DetailedConditionsText = LatestForecast.DetailedForecast;
-			ConditionIcon = "icons_land_day_rain_20_rain_40_size_medium.png";
         }
     }
 }

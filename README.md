@@ -25,10 +25,13 @@ As of 5-Dec-2023:
 
 ## Implemented Features
 
-- Show current weather conditions.
-- Get weather forecast for location.
-- Get location by user input.
+Latest-to-oldest:
+
+- Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
 - Get location by device location (Android only).
+- Get location by user input.
+- Get weather forecast for location.
+- Show current weather conditions.
 
 ## Remaining Work To Be Done
 
@@ -46,9 +49,9 @@ In No particular order:
 - Exception handling: Catch FeatureNotSupported, FeatureNotEnabled, and Permission Exception types.
 - Consider refactoring `MainPage.OnAppearing()` logic to a dedicated function
 - Dedicate a class and function to process lattitude and longitude entries (curently this is duplicated code) (MainPage and SetLocation).
-- Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
 - Ensure code installs, operates, and looks correct on at least one actual Android device/phone (not just the emulator).
 - Update UI to be responsive to window size, device orientation, and device type.
+- Various refactorings to improve code quality and readability.
 
 ### Stretch Goals
 
