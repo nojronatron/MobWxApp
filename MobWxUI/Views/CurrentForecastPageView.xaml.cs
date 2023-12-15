@@ -20,7 +20,7 @@ public partial class CurrentForecastPageView : BaseView<CurrentForecastViewModel
     async void HandleImageDownloadFailed(object? sender, string e)
     {
         ArgumentNullException.ThrowIfNull(sender);
-        await dispatcher.DispatchAsync(() => DisplayAlert("Image Download Failed!", e, "OK"));
+        await dispatcher.DispatchAsync(() => DisplayAlert("Unable to Display Image.", "Unavailable or took too long.", "OK"));
     }
 
     protected override void OnAppearing()

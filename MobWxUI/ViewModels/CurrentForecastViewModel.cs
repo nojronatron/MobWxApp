@@ -34,13 +34,13 @@ namespace MobWxUI.ViewModels
 				GetImageClient.DefaultRequestHeaders.Clear();
 				GetImageClient.DefaultRequestHeaders.Add("Accept", "image/png");
 				GetImageClient.DefaultRequestHeaders.Add("User-Agent", "(exploring,jonrumsey.dev@gmail.com)");
-				WxImageByteArray = await _apiHelper
-					.Apihelper
+				WxImageByteArray = await GetImageClient
 					.GetByteArrayAsync(ConditionIcon, maximumDownloadTimeCTS.Token)
 					.WaitAsync(token)
 					.ConfigureAwait(false);
 				await minimumDownloadTimeTask.ConfigureAwait(false);
-			} catch (Exception ex)
+			}
+			catch (Exception ex)
 			{
 				Debug.WriteLine(ex);
 				OnImageDownloadFailed(ex.Message);
@@ -159,8 +159,8 @@ namespace MobWxUI.ViewModels
             _currentForecastCollection.Add(_userSettingsParams.CurrentForecast);
             LatestForecast = _currentForecastCollection.GetLatestForecast();
 
-            ConditionIcon = LatestForecast.Icon;
-            RightNow = LatestForecast.ShortForecast;
+			ConditionIcon = LatestForecast.Icon;
+			RightNow = LatestForecast.ShortForecast;
 			TempAndUnit = LatestForecast.Temp;
 			Rh = LatestForecast.RelativeHumidity!.ToString();
 			Dew = LatestForecast.Dewpoint!.ToString();
