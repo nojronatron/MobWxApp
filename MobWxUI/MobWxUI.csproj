@@ -49,9 +49,6 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4">
-		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</MauiIcon>
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -68,12 +65,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\hawaii_054_medium.png" />
-	  <None Remove="Resources\Images\hawaii_054_small.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
+	  <MauiIcon Include="Resources\AppIcon\mobwxlogo.png" Color="#3C29A2" />
 	</ItemGroup>
 
 	<ItemGroup>
