@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobWxUI.Views.SetLocationPageView"
-             Title="SetLocationPageView">
+             >
 
     <VerticalStackLayout Spacing="10"
                          Margin="5">
@@ -14,6 +14,7 @@
                />
         <Editor Placeholder="Example: 45.6789,-122.3456"
                 Text="{Binding LatLonEntry}"
+                ToolTipProperties.Text="Enter your coordinates in Decimal Degrees."
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 MinimumWidthRequest="250"

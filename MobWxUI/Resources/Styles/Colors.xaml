@@ -28,6 +28,25 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <Color x:Key="TextLightThemeColor">DarkGreen</Color>
+    <Color x:Key="BackgroundLightThemeColor">#FFCBF1F8</Color>
+    <Color x:Key="TextDarkThemeColor">#FF94D8E8</Color>
+    <Color x:Key="BackgroundDarkThemeColor">#FF414bb2</Color>
+    <Color x:Key="AltForegroundLightThemeColor">#FF414BB2</Color>
+    <Color x:Key="AltForegroundDarkThemeColor">#FF6A5B27</Color>
+    <Color x:Key="AltBackgroundLightThemeColor">#FFFFDA46</Color>
+    <Color x:Key="AltBackgroundDarkThemeColor">#FF6A5B27</Color>
+    
+    <SolidColorBrush x:Key="TextLightThemeBrush" Color="{StaticResource TextLightThemeColor}" />
+    <SolidColorBrush x:Key="BackgroundLightThemeBrush" Color="{StaticResource BackgroundLightThemeColor}" />
+    <SolidColorBrush x:Key="TextDarkThemeBrush" Color="{StaticResource AltBackgroundDarkThemeColor}" />
+    <SolidColorBrush x:Key="BackgroundDarkThemeBrush" Color="{StaticResource BackgroundDarkThemeColor}" />
+    <SolidColorBrush x:Key="AltForegroundLightThemeBrush" Color="{StaticResource AltForegroundLightThemeColor}" />
+    <SolidColorBrush x:Key="AltForegroundDarkThemeBrush" Color="{StaticResource AltForegroundDarkThemeColor}" />
+    <SolidColorBrush x:Key="AltBackgroundLightThemeBrush" Color="{StaticResource AltBackgroundLightThemeColor}" />
+    <SolidColorBrush x:Key="AltBackgroundDarkThemeBrush" Color="{StaticResource AltBackgroundDarkThemeColor}" />
+
+    
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
