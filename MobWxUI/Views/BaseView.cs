@@ -17,10 +17,6 @@ namespace MobWxUI.Views
         {
             BindingContext = viewModel;
             Padding = 12; // todo: reconsider including this
-            if (string.IsNullOrWhiteSpace(Title))
-            {
-                Title = GetType().Name;
-            }
         }
 
         protected override void OnAppearing()
