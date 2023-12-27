@@ -8,9 +8,20 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MobWxUI">
 
-    <ShellContent
-        Title="MobWx - The Mobile Weather App"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Location">
+            <ShellContent Title="Set Location"
+                          ContentTemplate="{DataTemplate views:MainPage}"
+                          Route="MainPage" 
+                          />
+        </Tab>
+        
+        <Tab Title="About">
+            <ShellContent Title="About"
+                          ContentTemplate="{DataTemplate views:AboutPageView}"
+                          Route="AboutPage" 
+                          />
+        </Tab>
+    </TabBar>
 
 </Shell>
