@@ -1,5 +1,4 @@
 using MobWxUI.ViewModels;
-using Microsoft.Maui.Dispatching;
 
 namespace MobWxUI.Views;
 
