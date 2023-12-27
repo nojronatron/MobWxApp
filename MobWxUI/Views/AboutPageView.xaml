@@ -11,29 +11,16 @@
     
     <VerticalStackLayout>
         <Label 
-            Text="Mobile Weather App"
+            Text="About Mobile Weather App"
             />
-        <HorizontalStackLayout>
-            <Label Text="Version"
-               />
-            <Label Text="1.0.0 alpha"
-               />
-            <Label Text="Today"
-               />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label Text="Developer"
-               />
-        </HorizontalStackLayout>
-        <HorizontalStackLayout>
-            <Label Text="Jon Rumsey aka Nojronatron"
-               />
-            <Label Text="https://github.com/nojronatron"
-               />
-            <Label Text="https://linkedin.com/in/jonathan-rumsey-wa"
-               />
-        </HorizontalStackLayout>
-
+        <Label Text="{Binding AppVersion}"
+           />
+        <Label Text="{Binding DeveloperName}"
+           />
+        <Label Text="{Binding GitHubUrl}"
+            />
+        <Label Text="{Binding LinkedInUrl}"
+           />
     </VerticalStackLayout>
     
 </views:BaseView>

@@ -4,9 +4,7 @@ namespace MobWxUI.Views;
 
 public partial class AboutPageView : BaseView<AboutPageViewModel>
 {
-	public AboutPageView(
-		AboutPageViewModel aboutPageViewModel
-		) : base(aboutPageViewModel)
+	public AboutPageView(AboutPageViewModel aboutPageViewModel) : base(aboutPageViewModel)
 	{
 		InitializeComponent();
 	}
