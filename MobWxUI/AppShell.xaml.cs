@@ -7,8 +7,8 @@ namespace MobWxUI
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(CurrentForecastPageView), typeof(CurrentForecastPageView));
-            Routing.RegisterRoute(nameof(SetLocationPageView), typeof(SetLocationPageView));
+            //Routing.RegisterRoute(nameof(CurrentForecastPageView), typeof(CurrentForecastPageView));
+            //Routing.RegisterRoute(nameof(SetLocationPageView), typeof(SetLocationPageView));
         }
     }
 }
