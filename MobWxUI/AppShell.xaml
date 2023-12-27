@@ -6,20 +6,30 @@
     xmlns:local="clr-namespace:MobWxUI"
     xmlns:views="clr-namespace:MobWxUI.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="MobWxUI">
+    >
 
     <TabBar>
         <Tab Title="Location">
-            <ShellContent Title="Set Location"
-                          ContentTemplate="{DataTemplate views:MainPage}"
-                          Route="MainPage" 
+            <ShellContent Title="Set Your Location"
+                          ContentTemplate="{DataTemplate views:SetLocationPageView}"
                           />
         </Tab>
-        
+
+        <Tab Title="Conditions">
+            <ShellContent Title="Detailed Conditions"
+                          ContentTemplate="{DataTemplate views:DetailedConditionsView}"
+                          />
+        </Tab>
+
+        <!--<Tab Title="Forecast">
+            <ShellContent Title="Forecast"
+                          ContentTemplate="{DataTemplate views:CurrentForecastPageView}"
+                          />
+        </Tab>-->
+            
         <Tab Title="About">
             <ShellContent Title="About"
                           ContentTemplate="{DataTemplate views:AboutPageView}"
-                          Route="AboutPage" 
                           />
         </Tab>
     </TabBar>
