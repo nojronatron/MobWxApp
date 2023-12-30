@@ -13,10 +13,16 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 27-Dec-2023:
+
+- Initial development of TabBar navigation.
+- Added placeholder About page.
+- Added TabBar icons (more to come).
+
 As of 12-Dec-2023:
 
-- In development
-- Android location services utilized to gather device location
+- In development.
+- Android location services utilized to gather device location.
 
 As of 5-Dec-2023:
 
@@ -27,6 +33,7 @@ As of 5-Dec-2023:
 
 Latest-to-oldest:
 
+- Move UI to TabBar views paradigm.
 - Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
 - Get location by device location (Android only).
 - Get location by user input.
@@ -42,7 +49,7 @@ In No particular order:
 - Reconsider if Collections are really necessary for this app.
 - Implement NWS/NOAA API cache-friendly code (currently the code ignores caching requests).
 - Quick recall of forecast weather data periods (e.g. Tomorrow, Tomorrow night, Thursday, etc).
-- An about page to show app information.
+- Add an about page to show app, developer information.
 - Update UI with color palette.
 - Update UI light/dark scheme.
 - Navigation bar to: Enter location, show current weather, show list of forecasts, and any other pages.
@@ -66,3 +73,4 @@ In No particular order:
 - Various code snippets from [MAUI Community Toolkit](https://github.com/CommunityToolkit/Maui), December 2023.
 - Splash screen images screen-snipped from [NOAA GOES Image Viewer](https://www.star.nesdis.noaa.gov/GOES/index.php), 3-Dec-2023.
 - Exclamation Mark icon from [Icons8](https://icons8.com/icon/j1rPetruM5Fl/exclamation-mark).
+- Custom icons by [me](https://github.com/nojronatron).
