@@ -16,7 +16,7 @@ namespace MobWxUI.Views
         protected BaseView(object? viewModel = null)
         {
             BindingContext = viewModel;
-            Padding = 12;
+            Padding = 12; // todo: reconsider including this
         }
 
         protected override void OnAppearing()

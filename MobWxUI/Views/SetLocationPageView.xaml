@@ -14,6 +14,7 @@
                />
         <Editor Placeholder="Example: 45.6789,-122.3456"
                 Text="{Binding LatLonEntry}"
+                ToolTipProperties.Text="Enter your coordinates in Decimal Degrees."
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
                 MinimumWidthRequest="250"

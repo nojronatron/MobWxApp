@@ -13,10 +13,17 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 16-Dec-2023:
+
+- Added contrasting color palettes to UI style resources.
+- Platform light/dark modes automatically supported, applied to UI.
+- Added custom AppIcon.
+- Changed Windows platform App size to something more reasonable. :smiley:
+
 As of 12-Dec-2023:
 
-- In development
-- Android location services utilized to gather device location
+- In development.
+- Android location services utilized to gather device location.
 
 As of 5-Dec-2023:
 
@@ -27,6 +34,8 @@ As of 5-Dec-2023:
 
 Latest-to-oldest:
 
+- Update UI with color palette.
+- Update UI light/dark scheme (follows platform scheme).
 - Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
 - Get location by device location (Android only).
 - Get location by user input.
@@ -43,8 +52,6 @@ In No particular order:
 - Implement NWS/NOAA API cache-friendly code (currently the code ignores caching requests).
 - Quick recall of forecast weather data periods (e.g. Tomorrow, Tomorrow night, Thursday, etc).
 - An about page to show app information.
-- Update UI with color palette.
-- Update UI light/dark scheme.
 - Navigation bar to: Enter location, show current weather, show list of forecasts, and any other pages.
 - Exception handling: Catch FeatureNotSupported, FeatureNotEnabled, and Permission Exception types.
 - Consider refactoring `MainPage.OnAppearing()` logic to a dedicated function
