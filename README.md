@@ -19,6 +19,13 @@ As of 27-Dec-2023:
 - Added placeholder About page.
 - Added TabBar icons (more to come).
 
+As of 16-Dec-2023:
+
+- Added contrasting color palettes to UI style resources.
+- Platform light/dark modes automatically supported, applied to UI.
+- Added custom AppIcon.
+- Changed Windows platform App size to something more reasonable. :smiley:
+
 As of 12-Dec-2023:
 
 - In development.
@@ -34,6 +41,8 @@ As of 5-Dec-2023:
 Latest-to-oldest:
 
 - Move UI to TabBar views paradigm.
+- Update UI with color palette.
+- Update UI light/dark scheme (follows platform scheme).
 - Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
 - Get location by device location (Android only).
 - Get location by user input.

@@ -24,11 +24,11 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource AltBackgroundLightThemeColor}, Dark={StaticResource AltBackgroundDarkThemeColor}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="BorderWidth" Value="2"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
@@ -89,11 +89,11 @@
     </Style>
 
     <Style TargetType="Editor">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray950}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}" />
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -161,7 +161,7 @@
     </Style>
 
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
@@ -394,10 +394,10 @@
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundLightThemeColor}, Dark={StaticResource BackgroundDarkThemeColor}}" />
     </Style>
 
-    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+    <!--<Style TargetType="Shell" ApplyToDerivedTypes="True">
         <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource OffBlack}}" />
         <Setter Property="Shell.ForegroundColor" Value="{OnPlatform WinUI={StaticResource Primary}, Default={StaticResource White}}" />
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource SecondaryDarkText}}" />
@@ -421,6 +421,6 @@
         <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}" />
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>
