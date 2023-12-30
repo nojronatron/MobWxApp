@@ -5,33 +5,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MobWxUI"
     xmlns:views="clr-namespace:MobWxUI.Views"
-    Shell.FlyoutBehavior="Disabled"
-    >
+    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutIcon="mobwx_logo_v3_medium.png"
+    Title="MobWxUI">
 
-    <TabBar>
-        <Tab Title="Location">
-            <ShellContent Title="Set Your Location"
-                          ContentTemplate="{DataTemplate views:SetLocationPageView}"
+    <FlyoutItem Title="Tools"
+                FlyoutIcon="mobwx_tabbar_location_dark.png"
+                >
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:SetLocationPageView}"
                           />
         </Tab>
-
-        <Tab Title="Conditions">
-            <ShellContent Title="Detailed Conditions"
-                          ContentTemplate="{DataTemplate views:DetailedConditionsView}"
+    </FlyoutItem>
+    <FlyoutItem Title="About"
+                Icon="mobwx_tabbar_about.png"
+                >
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:AboutPageView}"
                           />
         </Tab>
-
-        <!--<Tab Title="Forecast">
-            <ShellContent Title="Forecast"
-                          ContentTemplate="{DataTemplate views:CurrentForecastPageView}"
-                          />
-        </Tab>-->
-            
-        <Tab Title="About">
-            <ShellContent Title="About"
-                          ContentTemplate="{DataTemplate views:AboutPageView}"
-                          />
-        </Tab>
-    </TabBar>
+    </FlyoutItem>
 
 </Shell>

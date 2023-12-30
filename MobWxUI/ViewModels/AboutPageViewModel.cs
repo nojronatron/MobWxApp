@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace MobWxUI.ViewModels
             AppVersion = "Version: 1.0.0 alpha";
             DeveloperName = "Developer: Jon Rumsey (Nojronatron)";
             GitHubUrl = "GitHub: https://github.com/nojronatron";
-            LinkedInUrl = "LinkedIn: www.linkedin.com/in/jonathan-rumsey-wa";
+            LinkedInUrl = "LinkedIn: https://www.linkedin.com/in/jonathan-rumsey-wa";
         }
 
         public void Dispose()
