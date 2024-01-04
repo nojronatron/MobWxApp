@@ -179,6 +179,10 @@
         </Setter>
     </Style>
 
+    <Style x:Key="AboutLabel" TargetType="Label">
+        <Setter Property="Padding" Value="8" />
+    </Style>
+    
     <Style TargetType="Span">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
     </Style>

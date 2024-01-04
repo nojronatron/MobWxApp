@@ -7,20 +7,61 @@
              xmlns:vm="clr-namespace:MobWxUI.ViewModels"
              x:TypeArguments="vm:AboutPageViewModel"
              x:DataType="vm:AboutPageViewModel"
+             
              >
     
     <VerticalStackLayout>
-        <Label 
-            Text="About Mobile Weather App"
-            />
-        <Label Text="{Binding AppVersion}"
+        <Image Source="mobwx_logo_v3_medium.png"
+               WidthRequest="200"
+               Margin="0,32"
+               />
+        <Label Style="{StaticResource SubHeadline}"
+               Text="MobWx - Mobile Weather App"
+               HorizontalOptions="Center"
+               Margin="0,12"
+               />
+        <Label Style="{StaticResource AboutLabel}"
+               Text="{Binding AppVersion}"
+               HorizontalOptions="Center"
            />
-        <Label Text="{Binding DeveloperName}"
+        <Label Style="{StaticResource AboutLabel}"
+               Text="{Binding DeveloperName}"
+               HorizontalOptions="Center"
            />
-        <Label Text="{Binding GitHubUrl}"
-            />
-        <Label Text="{Binding LinkedInUrl}"
-           />
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Style="{StaticResource AboutLabel}"
+                   Text="{Binding GitHubLabel}"
+                   HorizontalTextAlignment="End"
+                   />
+            <Label Text="github.com/nojronatron"
+                   TextColor="DarkBlue"
+                   TextDecorations="Underline"
+                   VerticalTextAlignment="Center"
+                   >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                      CommandParameter="{Binding GitHubUrl}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Style="{StaticResource AboutLabel}"
+                   Text="{Binding LinkedInLabel}"
+                   HorizontalTextAlignment="End"
+                   />
+            <Label Text="{Binding LinkedInShortUrl}"
+                   TextColor="DarkBlue"
+                   TextDecorations="Underline"
+                   VerticalOptions="Center"
+                   >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="{Binding LinkedInUrl}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
     
 </views:BaseView>
