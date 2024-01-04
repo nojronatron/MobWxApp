@@ -7,13 +7,11 @@
              xmlns:vm="clr-namespace:MobWxUI.ViewModels"
              x:TypeArguments="vm:AboutPageViewModel"
              x:DataType="vm:AboutPageViewModel"
-             
              >
     
     <VerticalStackLayout>
-        <Image Source="mobwx_logo_v3_medium.png"
-               WidthRequest="200"
-               Margin="0,32"
+        <Image Source="mobwx_logo_v3_260x260.png"
+               WidthRequest="260"
                />
         <Label Style="{StaticResource SubHeadline}"
                Text="MobWx - Mobile Weather App"
