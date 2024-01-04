@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using MobWxUI.Data;
 using MobWxUI.Helpers;
 using MobWxUI.Models;
@@ -8,7 +7,7 @@ using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
-    public class SetLocationViewModel : ObservableObject
+    public class SetLocationViewModel : BaseViewModel
     {
         private readonly CurrentForecastCollection _currentForecastCollection;
         private IUserSettingsParams _userSettings;

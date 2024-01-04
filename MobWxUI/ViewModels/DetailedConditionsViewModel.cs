@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MobWxUI.ViewModels
+﻿namespace MobWxUI.ViewModels
 {
-    public class DetailedConditionsViewModel
+    public class DetailedConditionsViewModel : BaseViewModel
     {
     }
 }

@@ -2,11 +2,10 @@ using MobWxUI.ViewModels;
 
 namespace MobWxUI.Views;
 
-public partial class SetLocationPageView : ContentPage
+public partial class SetLocationPageView : BaseView<SetLocationViewModel>
 {
-	public SetLocationPageView(SetLocationViewModel setLocationViewModel)
+	public SetLocationPageView(SetLocationViewModel setLocationViewModel) : base(setLocationViewModel)
 	{
-		BindingContext = setLocationViewModel;
 		InitializeComponent();
 	}
 }

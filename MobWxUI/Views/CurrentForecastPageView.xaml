@@ -36,13 +36,6 @@
                         Converter={StaticResource ByteArrayToImageSourceConverter}}"
                    HeightRequest="86"
                    />
-            <Image Grid.Row="1"
-                   Grid.Column="1"
-                   Grid.ColumnSpan="3"
-                   Source="{Binding DefaultAlertIcon}"
-                   HeightRequest="86"
-                   IsVisible="True"
-                   />
             <!-- Right Now -->
             <!-- Current Conditions Content -->
             <Label  Text="{Binding RightNow}"
