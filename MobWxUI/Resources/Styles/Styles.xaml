@@ -161,7 +161,8 @@
     </Style>
 
     <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />
@@ -180,6 +181,18 @@
     </Style>
 
     <Style x:Key="AboutLabel" TargetType="Label">
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextLightThemeColor}}" />
+    </Style>
+
+    <Style x:Key="HyperLinkLabel" TargetType="Label">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource AltForegroundLightThemeColor}, Dark={StaticResource AltForegroundLightThemeColor}}" />
+        <Setter Property="BackgroundColor" 
+                Value="Transparent" />
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="Padding" Value="8" />
     </Style>
     
