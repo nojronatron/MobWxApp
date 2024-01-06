@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MobWxUI.Views.DetailedConditionsView"
+                xmlns:views="clr-namespace:MobWxUI.Views"
+                xmlns:vm="clr-namespace:MobWxUI.ViewModels"
+                x:TypeArguments="vm:DetailedConditionsViewModel"
+                x:DataType="vm:DetailedConditionsViewModel"
              >
     
     <VerticalStackLayout>
@@ -11,4 +16,4 @@
             HorizontalOptions="Center" />
     </VerticalStackLayout>
     
-</ContentPage>
+</views:BaseView>

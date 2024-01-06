@@ -8,20 +8,77 @@
              x:TypeArguments="vm:AboutPageViewModel"
              x:DataType="vm:AboutPageViewModel"
              >
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="About Mobile Weather App"
-            />
-        <Label Text="{Binding AppVersion}"
-           />
-        <Label Text="{Binding DeveloperName}"
-           />
-        <Label Text="{Binding GitHubUrl}"
-            />
-        <Label Text="{Binding LinkedInUrl}"
-           />
-    </VerticalStackLayout>
-    
-</views:BaseView>
 
+    <ScrollView>
+
+        <VerticalStackLayout>
+
+            <Image Source="mobwx_logo_v3_260x260.png"
+                   WidthRequest="260"
+               />
+            <Label Style="{StaticResource SubHeadline}"
+                   Text="Mobile Weather App"
+                   HorizontalOptions="Center"
+                   Margin="0,12"
+               />
+
+            <Border Background="{StaticResource TextDarkThemeColor}"
+                    StrokeThickness="4"
+                    Padding="8"
+                    HorizontalOptions="Center"
+                    >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12,12,12,12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout>
+                    <Label Style="{StaticResource AboutLabel}"
+                           Text="{Binding AppVersion}"
+                           HorizontalOptions="Center"
+                        />
+                    <Label Style="{StaticResource AboutLabel}"
+                           Text="{Binding DeveloperName}"
+                           HorizontalOptions="Center"
+                   />
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="{Binding GitHubLabel}"
+                               HorizontalTextAlignment="End"
+                               TextColor="{StaticResource TextLightThemeColor}"
+                               VerticalOptions="Center"
+                        />
+                        <Label Text="{Binding ProjectUrl}"
+                               Style="{StaticResource HyperLinkLabel}"
+                        >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="{Binding GitHubUrl}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center"
+                                            >
+                        <Label Text="{Binding LinkedInLabel}"
+                                HorizontalTextAlignment="End"
+                                TextColor="{StaticResource TextLightThemeColor}"
+                                VerticalOptions="Center"
+                        />
+                        <Label Text="{Binding LinkedInShortUrl}"
+                               Style="{StaticResource HyperLinkLabel}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="{Binding LinkedInUrl}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+                
+            </Border>
+
+        </VerticalStackLayout>
+            
+    </ScrollView>
+
+</views:BaseView>

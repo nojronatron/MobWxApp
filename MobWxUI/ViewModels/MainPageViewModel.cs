@@ -2,7 +2,7 @@
 
 namespace MobWxUI.ViewModels
 {
-    public class MainPageViewModel : ObservableObject
+    public class MainPageViewModel : BaseViewModel
     {
         public MainPageViewModel()
         {

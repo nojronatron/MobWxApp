@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
@@ -11,14 +7,48 @@ namespace MobWxUI.ViewModels
     {
         public string AppVersion { get; set; }
         public string DeveloperName { get; set; }
+        public string GitHubLabel { get; set; }
         public string GitHubUrl { get; set; }
+        public string ProjectUrl { get; set; }
+        public string LinkedInLabel { get; set; }
         public string LinkedInUrl { get; set; }
+        public string LinkedInShortUrl { get; set;}
+
+        public IAsyncRelayCommand<string> TapCommand => 
+            new AsyncRelayCommand<string>(
+                async (url) => await BrowserOpen(url)
+                );
 
         public AboutPageViewModel() {
             AppVersion = "Version: 1.0.0 alpha";
             DeveloperName = "Developer: Jon Rumsey (Nojronatron)";
-            GitHubUrl = "GitHub: https://github.com/nojronatron";
-            LinkedInUrl = "LinkedIn: https://www.linkedin.com/in/jonathan-rumsey-wa";
+            GitHubLabel = "Project Home: ";
+            ProjectUrl = "github.com/nojronatron";
+            GitHubUrl = "https://github.com/nojronatron/MobWxApp";
+            LinkedInLabel = "LinkedIn Profile: ";
+            LinkedInShortUrl = "in/jonathan-rumsey-wa";
+            LinkedInUrl = "https://www.linkedin.com/in/jonathan-rumsey-wa";
+        }
+
+        private async Task BrowserOpen(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return;
+            }
+            try
+            {
+                Debug.WriteLine("Entered BrowserOpen!");
+                Uri uri = new Uri(url);
+                var browserLaunchSucceeded = await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+                Debug.WriteLine($"Browser launch succeeded? {browserLaunchSucceeded}");
+            }
+            catch (Exception ex)
+            {
+                // no browser installed?
+                // todo: handle this error and notify the user
+                Debug.WriteLine(ex.Message);
+            }
         }
 
         public void Dispose()

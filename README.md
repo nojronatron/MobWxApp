@@ -13,6 +13,11 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 6-Dec-2023:
+
+- Updated About page, including hyperlinks to project and dev sites.
+- Added ScrollView to About page.
+
 As of 27-Dec-2023:
 
 - Initial development of TabBar navigation.
@@ -40,6 +45,7 @@ As of 5-Dec-2023:
 
 Latest-to-oldest:
 
+- Add an about page to show app, developer information.
 - Move UI to TabBar views paradigm.
 - Update UI with color palette.
 - Update UI light/dark scheme (follows platform scheme).
@@ -58,12 +64,9 @@ In No particular order:
 - Reconsider if Collections are really necessary for this app.
 - Implement NWS/NOAA API cache-friendly code (currently the code ignores caching requests).
 - Quick recall of forecast weather data periods (e.g. Tomorrow, Tomorrow night, Thursday, etc).
-- Add an about page to show app, developer information.
-- Update UI with color palette.
-- Update UI light/dark scheme.
 - Navigation bar to: Enter location, show current weather, show list of forecasts, and any other pages.
 - Exception handling: Catch FeatureNotSupported, FeatureNotEnabled, and Permission Exception types.
-- Consider refactoring `MainPage.OnAppearing()` logic to a dedicated function
+- Consider refactoring `MainPage.OnAppearing()` logic to a dedicated function.
 - Dedicate a class and function to process lattitude and longitude entries (curently this is duplicated code) (MainPage and SetLocation).
 - Ensure code installs, operates, and looks correct on at least one actual Android device/phone (not just the emulator).
 - Update UI to be responsive to window size, device orientation, and device type.
