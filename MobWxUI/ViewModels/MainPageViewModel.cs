@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using MobWxUI.Helpers;
 using System.Diagnostics;
+using MobWxUI.Views;
 
 namespace MobWxUI.ViewModels
 {
@@ -10,6 +11,14 @@ namespace MobWxUI.ViewModels
         private readonly IApiHelper _apiHelper;
         public IAsyncRelayCommand ClickDiscoveredLocation { get; set; }
         public IAsyncRelayCommand ClickSetLocation { get; set; }
+        public IAsyncRelayCommand ClickCityState { get; set; }
+
+        private string _informationMessage = string.Empty;
+        public string InformationMessage
+        {
+            get => _informationMessage;
+            set => SetProperty(ref _informationMessage, value);
+        }
 
         public IUserSettingsParams UserSettingsParams
         {
@@ -57,6 +66,7 @@ namespace MobWxUI.ViewModels
             _userSettingsParams = userSettingsParams;
             ClickDiscoveredLocation = new AsyncRelayCommand(ClickDiscoveredLocationCommand);
             ClickSetLocation = new AsyncRelayCommand(ClickSetLocationCommand);
+            ClickCityState = new AsyncRelayCommand(ClickCityStateCommand);
         }
 
         private async Task ClickDiscoveredLocationCommand()
@@ -73,12 +83,11 @@ namespace MobWxUI.ViewModels
                 Debug.WriteLine($"DiscoveredLocation is not null => {DiscoveredLocation}");
             }
 
-            // store the data in the collections (later: database)
-            
+            // store the data in the collections (later: database) so that
             // when user uses Flyout to another page, the data is available
-            // show a message on-screen stating the location has been set
-
-            return;
+            string[] latLonArr = DiscoveredLocation.Split(',');
+            _userSettingsParams.AddCoordinates(latLonArr[0], latLonArr[1]);
+            await GetPointsAndForecast();
         }
 
         private async Task ClickSetLocationCommand()
@@ -89,8 +98,58 @@ namespace MobWxUI.ViewModels
             // show a message on-screen stating the location has been set
             // when user uses Flyout to another page, the data is available
             Debug.WriteLine("Executing MainPageVM ClickSetLocationCommand()");
+            if (string.IsNullOrEmpty(LatLonEntry) || LatLonEntry.IndexOf(',') == -1)
+            {
+                InformationMessage = "Enter a valid latitude,longitude pair.";
+                return;
+            }
 
+            string[] latLonArr = LatLonEntry.Split(',');
+            _userSettingsParams.AddCoordinates(latLonArr[0], latLonArr[1]);
+            await GetPointsAndForecast();
+        }
+
+        private async Task ClickCityStateCommand()
+        {
+            // utilize GeoLocation API to get Lat/Lon from City, State entry
+            InformationMessage = "City State search is not yet implemented.";
             return;
+        }
+
+        private async Task GetPointsAndForecast()
+        {
+            // only call this after setting _userSettingsParams.Coordinates
+            if (_userSettingsParams.HasCoordinates is false)
+            {
+                InformationMessage = "Location is not valid or is empty.";
+                Debug.WriteLine($"Coordinates is null or empty. Returning.");
+                return;
+            }
+
+            var jsonPointsResponse = await _apiHelper.GetPointsAsync(_userSettingsParams.Coordinates);
+            var pointsResponse = RestResponseProcessor.ProcessPointsResponse(jsonPointsResponse);
+
+            if (pointsResponse is null)
+            {
+                InformationMessage = "Weather data could not be retreived try again later.";
+                Debug.WriteLine($"PointsResponse is null or Id is null. Returning.");
+                return;
+            }
+
+            var jsonForecastResponse = await _apiHelper.GetForecastAsync(pointsResponse);
+            var forecastResponse = RestResponseProcessor.ProcessForecastResponse(jsonForecastResponse);
+            
+            if (forecastResponse is null || forecastResponse.Periods.Count() < 1)
+            {
+                InformationMessage = "Weather data could not be retreived try again later.";
+                Debug.WriteLine($"ForecastResponse is null or empty. Returning.");
+                return;
+            }
+            
+            _userSettingsParams.PointsResponse = pointsResponse;
+            _userSettingsParams.CurrentForecast = forecastResponse;
+            InformationMessage = string.Empty;
+            await Shell.Current.GoToAsync(nameof(CurrentConditionsView), true);
         }
     }
 }

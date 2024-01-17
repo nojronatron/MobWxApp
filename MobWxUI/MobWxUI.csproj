@@ -77,8 +77,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\CurrentForecastPageView.xaml.cs">
-	    <DependentUpon>CurrentForecastPageView.xaml</DependentUpon>
+	  <Compile Update="Views\CurrentConditionsView.xaml.cs">
+	    <DependentUpon>CurrentConditionsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ForecastView.xaml.cs">
+	    <DependentUpon>ForecastView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -86,13 +89,10 @@
 	  <MauiXaml Update="Views\AboutPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CurrentForecastPageView.xaml">
+	  <MauiXaml Update="Views\CurrentConditionsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\DetailedConditionsView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\SetLocationPageView.xaml">
+	  <MauiXaml Update="Views\ForecastView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

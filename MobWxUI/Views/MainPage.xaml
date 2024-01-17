@@ -27,13 +27,14 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout>
-            <Label Text="Get a forecast for City, State"
+            <Label Text="Get a forecast for: City, State"
                    HorizontalTextAlignment="Center" />
-            <Editor Placeholder="Seattle, WA"
+            <Editor Placeholder="city name, ST"
                     Text="{Binding CityState}" 
                     HorizontalTextAlignment="Center" />
-            <Button Text="Set Location"
-                    Command="{Binding ClickSetLocation}" />
+            <Button Text="Set Location (future)"
+                    Command="{Binding ClickCityState}"
+                    IsEnabled="false" />
         </VerticalStackLayout>
 
         <VerticalStackLayout>
@@ -47,7 +48,9 @@
             <Button Text="Set Location"
                     Command="{Binding ClickSetLocation}" />
         </VerticalStackLayout>
-        
+
+            <Label Text="{Binding InformationMessage}"
+                   HorizontalTextAlignment="Center" />
         </VerticalStackLayout>
     </FlexLayout>
     

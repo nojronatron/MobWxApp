@@ -2,11 +2,11 @@
 <views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="MobWxUI.Views.CurrentForecastPageView"
+             x:Class="MobWxUI.Views.CurrentConditionsView"
              xmlns:views="clr-namespace:MobWxUI.Views"
              xmlns:vm="clr-namespace:MobWxUI.ViewModels"
-             x:TypeArguments="vm:CurrentForecastViewModel"
-             x:DataType="vm:CurrentForecastViewModel"
+             x:TypeArguments="vm:CurrentConditionsViewModel"
+             x:DataType="vm:CurrentConditionsViewModel"
              >
 
     <views:BaseView.Resources>
@@ -15,7 +15,9 @@
         </ResourceDictionary>
     </views:BaseView.Resources>
     
-    <VerticalStackLayout>
+    <ScrollView>
+        
+        <VerticalStackLayout>
         <Grid Margin="8"
               RowDefinitions="40, 100, 40, 50, Auto, 40, 36, 36, 36, 36, 36, *"
               ColumnDefinitions="4, *, 20, *, 4">
@@ -127,5 +129,8 @@
             <!-- End Current Conditions -->
 
         </Grid>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    
+    </ScrollView>
+
 </views:BaseView>
