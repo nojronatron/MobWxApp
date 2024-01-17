@@ -24,7 +24,6 @@ public partial class CurrentForecastPageView : BaseView<CurrentForecastViewModel
 
     protected override void OnAppearing()
     {
-        base.OnAppearing();
         if (BindingContext.DownloadWxImageCommand.CanExecute(null))
         {
             BindingContext.DownloadWxImageCommand.Execute(BindingContext.ConditionIcon);

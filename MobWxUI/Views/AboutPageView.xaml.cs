@@ -7,6 +7,5 @@ public partial class AboutPageView : BaseView<AboutPageViewModel>
     public AboutPageView(AboutPageViewModel aboutPageViewModel) : base(aboutPageViewModel)
 	{
 		InitializeComponent();
-		Title = "About";
 	}
 }

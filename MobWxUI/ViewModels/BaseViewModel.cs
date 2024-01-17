@@ -5,5 +5,6 @@ namespace MobWxUI.ViewModels
 {
     public abstract partial class BaseViewModel : ObservableObject
     {
+
     }
 }
