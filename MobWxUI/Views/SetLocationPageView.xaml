@@ -1,34 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="MobWxUI.Views.SetLocationPageView"
+                x:Class="MobWxUI.Views.SetLocationPageView"
                 xmlns:views="clr-namespace:MobWxUI.Views"
                 xmlns:vm="clr-namespace:MobWxUI.ViewModels"
                 x:TypeArguments="vm:SetLocationViewModel"
                 x:DataType="vm:SetLocationViewModel"
-             >
+                >
     
     <VerticalStackLayout Spacing="10"
                          Margin="5">
-        <Label Text="{Binding CurrentLocation}"
+        <Label Text="Deprecated page!"
                FontSize="Medium"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"
-               Margin="10"
-               />
-        <Editor Placeholder="Example: 45.6789,-122.3456"
-                Text="{Binding LatLonEntry}"
-                ToolTipProperties.Text="Enter your coordinates in Decimal Degrees."
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                MinimumWidthRequest="250"
-                Margin="10"
-                />
-        <Button Text="Get Local Forecast"
-                HorizontalOptions="Center"
-                Margin="10"
-                Command="{Binding LatLonEntryCommand}"
                 />
 
     </VerticalStackLayout>

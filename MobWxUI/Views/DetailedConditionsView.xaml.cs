@@ -7,6 +7,6 @@ public partial class DetailedConditionsView : BaseView<DetailedConditionsViewMod
 	public DetailedConditionsView(DetailedConditionsViewModel detailedConditionsViewModel) : base(detailedConditionsViewModel)
 	{
 		InitializeComponent();
-		Title = "Conditions";
+		NavigationPage.SetHasBackButton(this, false);
 	}
 }
