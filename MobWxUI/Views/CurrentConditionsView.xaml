@@ -23,9 +23,7 @@
               ColumnDefinitions="4, *, 20, *, 4">
             <!-- Right Now Content -->
             <Label Text="{Binding ForecastLocation}"
-                    FontSize="Title"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
+                   Style="{StaticResource LocationName}"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
@@ -48,7 +46,7 @@
                     Grid.ColumnSpan="3" 
                     />
             <Label Text="{Binding ForecastName}"
-                    FontSize="Large"
+                    FontSize="20"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     Grid.Row="3"

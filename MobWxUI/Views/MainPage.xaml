@@ -10,48 +10,59 @@
                 xmlns:viewModels="clr-namespace:MobWxUI.ViewModels"
                 >
 
-    
-    <FlexLayout HorizontalOptions="Center">
-        <VerticalStackLayout Margin="20">
-            
-        <Label Text="{Binding LocationSetMessage}"
-               IsVisible="{Binding LocationIsSet}" 
-               HorizontalTextAlignment="Center" />
-        <VerticalStackLayout>
-            <Label Text="Current Latitude, Longitude"
-                   HorizontalTextAlignment="Center" />
-                <Label Text="Click for Current Conditions"
+
+    <ScrollView HorizontalOptions="Center"
+                Margin="20">
+        
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceEvenly">
+
+            <VerticalStackLayout>
+                <Label Text="{Binding LocationSetMessage}"
+                       IsVisible="{Binding LocationIsSet}" 
                        HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        
+            <VerticalStackLayout>
+                <Label Text="Current Coordinates"
+                       Style="{StaticResource LocationName}" />
+                <Label Text="Click for Current Conditions"
+                        HorizontalTextAlignment="Center" />
                 <Button Text="{Binding DiscoveredLocation}"
-                    Command="{Binding ClickDiscoveredLocation}" />
-        </VerticalStackLayout>
+                        Command="{Binding ClickDiscoveredLocation}"
+                        IsEnabled="{Binding ClickDiscoveredLocationEnabled}"/>
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Label Text="Get a forecast for: City, State"
-                   HorizontalTextAlignment="Center" />
-            <Editor Placeholder="city name, ST"
-                    Text="{Binding CityState}" 
-                    HorizontalTextAlignment="Center" />
-            <Button Text="Set Location (future)"
-                    Command="{Binding ClickCityState}"
-                    IsEnabled="false" />
-        </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Get a forecast for: City, State"
+                       Style="{StaticResource InputLabel}" />
+                <Editor Placeholder="city name, ST"
+                        Text="{Binding CityState}" 
+                        HorizontalTextAlignment="Center" />
+                <Button Text="Set Location (future)"
+                        Command="{Binding ClickCityState}"
+                        IsEnabled="false" />
+            </VerticalStackLayout>
 
-        <VerticalStackLayout>
-            <Label Text="Enter a location in decimal degrees"
-                   HorizontalTextAlignment="Center" />
-            <Editor Placeholder="Example: 34.567,-121.234"
-                    Text="{Binding LatLonEntry}"
-                    HorizontalTextAlignment="Center"
-                    ToolTipProperties.Text="Enter coordinates in Decimal Degrees."
-                    />
-            <Button Text="Set Location"
-                    Command="{Binding ClickSetLocation}" />
-        </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Enter a location in decimal degrees"
+                       Style="{StaticResource InputLabel}" />
+                <Editor Placeholder="Example: 34.567,-121.234"
+                        Text="{Binding LatLonEntry}"
+                        HorizontalTextAlignment="Center"
+                        ToolTipProperties.Text="Enter coordinates in Decimal Degrees."
+                        />
+                <Button Text="Set Location"
+                        Command="{Binding ClickSetLocation}" />
+            </VerticalStackLayout>
 
-            <Label Text="{Binding InformationMessage}"
-                   HorizontalTextAlignment="Center" />
-        </VerticalStackLayout>
-    </FlexLayout>
+            <VerticalStackLayout>
+                <Label Text="{Binding InformationMessage}"
+                       Style="{StaticResource InputLabel}" />
+            </VerticalStackLayout>
+
+        </FlexLayout>
+
+    </ScrollView>
     
 </views:BaseView>
