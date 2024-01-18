@@ -2,13 +2,13 @@ using MobWxUI.ViewModels;
 
 namespace MobWxUI.Views;
 
-public partial class CurrentForecastPageView : BaseView<CurrentForecastViewModel>
+public partial class CurrentConditionsView : BaseView<CurrentConditionsViewModel>
 {
     readonly IDispatcher dispatcher;
 
-    public CurrentForecastPageView(
+    public CurrentConditionsView(
         IDispatcher dispatcher, 
-        CurrentForecastViewModel currentForecastViewModel
+        CurrentConditionsViewModel currentForecastViewModel
         ) : base(currentForecastViewModel)
 	{
         InitializeComponent();
@@ -24,7 +24,6 @@ public partial class CurrentForecastPageView : BaseView<CurrentForecastViewModel
 
     protected override void OnAppearing()
     {
-        base.OnAppearing();
         if (BindingContext.DownloadWxImageCommand.CanExecute(null))
         {
             BindingContext.DownloadWxImageCommand.Execute(BindingContext.ConditionIcon);

@@ -13,13 +13,11 @@ namespace MobWxUI.Helpers
             if (string.IsNullOrWhiteSpace(jsonPointsResponse))
             {
                 return null;
-                //throw new ArgumentNullException(nameof(jsonPointsResponse), "Arugment cannot be null or white space.");
             }
 
             try
             {
                 return JsonSerializer.Deserialize<PointsResponseModel?>(jsonPointsResponse, _jsonOptions);
-                //return result ?? throw new Exception("Unable to deserialize the Json points response.");
             }
             catch (Exception ex)
             {
@@ -33,13 +31,11 @@ namespace MobWxUI.Helpers
             if (string.IsNullOrWhiteSpace(jsonForecastResponse))
             {
                 return null;
-                //throw new ArgumentNullException(nameof(jsonForecastResponse), "Argument cannot be null or empty.");
             }
 
             try
             {
                 return JsonSerializer.Deserialize<ForecastResponseModel?>(jsonForecastResponse, _jsonOptions);
-                //return result ?? throw new Exception("Unable to deserialize the Json points response.");
             }
             catch (Exception ex)
             {

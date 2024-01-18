@@ -6,17 +6,19 @@
     xmlns:local="clr-namespace:MobWxUI"
     xmlns:views="clr-namespace:MobWxUI.Views"
     Shell.FlyoutBehavior="Flyout"
-    Shell.FlyoutIcon="mobwx_logo_v3_bw_20x20.png"
     Title="MobWxUI">
 
-    <FlyoutItem Title="Tools"
-                Icon="mobwx_tabbar_location_dark.png"
-    >
-        <ShellContent ContentTemplate="{DataTemplate views:SetLocationPageView}" />
+    
+    <FlyoutItem Title="Main"
+                Icon="mobwx_logo_v3_bw_20x20.png" >
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Forecast"
+                Icon="mobwx_tabbar_location_dark.png" >
+        <ShellContent ContentTemplate="{DataTemplate views:ForecastView}" />
     </FlyoutItem>
     <FlyoutItem Title="About"
-                Icon="mobwx_tabbar_about.png"
-    >
+                Icon="mobwx_tabbar_about.png">
         <ShellContent ContentTemplate="{DataTemplate views:AboutPageView}" />
     </FlyoutItem>
 

@@ -19,16 +19,16 @@ namespace MobWxUI.Views
             Padding = 12; // todo: reconsider including this
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            Debug.WriteLine($"OnAppearing: {Title}");
-        }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    Debug.WriteLine($"OnAppearing: {Title}");
+        //}
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            Debug.WriteLine($"OnDisappearing: {Title}");
-        }
+        //protected override void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    Debug.WriteLine($"OnDisappearing: {Title}");
+        //}
     }
 }

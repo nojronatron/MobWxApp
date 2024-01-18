@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                x:Class="MobWxUI.Views.ForecastView"
+                xmlns:views="clr-namespace:MobWxUI.Views"
+                xmlns:vm="clr-namespace:MobWxUI.ViewModels"
+                x:TypeArguments="vm:ForecastViewModel"
+                x:DataType="vm:ForecastViewModel"
+                >
+
+    <ScrollView HorizontalOptions="Center"
+                Margin="20" >
+
+        <FlexLayout Direction="Column"
+                    JustifyContent="Start">
+
+            <VerticalStackLayout>
+                <Label Text="{Binding ForecastLocation}"
+                       Style="{StaticResource LocationName}" />
+                <Label Text="Will Show Scrolled 7-day Forecast"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+        </FlexLayout>
+    
+    </ScrollView>
+    
+</views:BaseView>

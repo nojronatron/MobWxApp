@@ -1,15 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobWxUI.Views.MainPage"
-             xmlns:viewModels="clr-namespace:MobWxUI.ViewModels"
-             >
+<views:BaseView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:views="clr-namespace:MobWxUI.Views"
+                xmlns:vm="clr-namespace:MobWxUI.ViewModels"
+                x:TypeArguments="vm:MainPageViewModel"
+                x:DataType="vm:MainPageViewModel"
+                x:Class="MobWxUI.Views.MainPage"
+                xmlns:viewModels="clr-namespace:MobWxUI.ViewModels"
+                >
 
-    <VerticalStackLayout>
-            <Image Source="hawaii_054_medium.png"
-               Aspect="AspectFit"
-               HeightRequest="720"
-               />
-    </VerticalStackLayout>
+
+    <ScrollView HorizontalOptions="Center"
+                Margin="20">
+        
+        <FlexLayout Direction="Column"
+                    JustifyContent="SpaceEvenly">
+
+            <VerticalStackLayout>
+                <Label Text="{Binding LocationSetMessage}"
+                       IsVisible="{Binding LocationIsSet}" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        
+            <VerticalStackLayout>
+                <Label Text="Current Coordinates"
+                       Style="{StaticResource LocationName}" />
+                <Label Text="Click for Current Conditions"
+                        HorizontalTextAlignment="Center" />
+                <Button Text="{Binding DiscoveredLocation}"
+                        Command="{Binding ClickDiscoveredLocation}"
+                        IsEnabled="{Binding ClickDiscoveredLocationEnabled}"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Get a forecast for: City, State"
+                       Style="{StaticResource InputLabel}" />
+                <Editor Placeholder="city name, ST"
+                        Text="{Binding CityState}" 
+                        HorizontalTextAlignment="Center" />
+                <Button Text="Set Location (future)"
+                        Command="{Binding ClickCityState}"
+                        IsEnabled="false" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Enter a location in decimal degrees"
+                       Style="{StaticResource InputLabel}" />
+                <Editor Placeholder="Example: 34.567,-121.234"
+                        Text="{Binding LatLonEntry}"
+                        HorizontalTextAlignment="Center"
+                        ToolTipProperties.Text="Enter coordinates in Decimal Degrees."
+                        />
+                <Button Text="Set Location"
+                        Command="{Binding ClickSetLocation}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="{Binding InformationMessage}"
+                       Style="{StaticResource InputLabel}" />
+            </VerticalStackLayout>
+
+        </FlexLayout>
+
+    </ScrollView>
     
-</ContentPage>
+</views:BaseView>

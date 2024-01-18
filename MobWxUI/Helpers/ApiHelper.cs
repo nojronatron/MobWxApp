@@ -1,4 +1,5 @@
 ﻿using MobWxUI.Models;
+using System.Diagnostics;
 
 namespace MobWxUI.Helpers
 {
@@ -31,16 +32,19 @@ namespace MobWxUI.Helpers
 
                 if (response.IsSuccessStatusCode)
                 {
+                    Debug.WriteLine("GetPointsAsync() response.IsSuccessStatusCode is true.");
                     result = await response.Content.ReadAsStringAsync();
                 }
             }
             catch (Exception ex)
             {
                 // todo: log this exception
+                Debug.WriteLine("GetPointsAsync() exception: " + ex.Message);
 
                 if (ex.InnerException != null)
                 {
                     // todo: log this exception
+                    Debug.WriteLine("GetPointsAsync() inner exception: " + ex.InnerException.Message);
                 }
             }
 
@@ -73,9 +77,12 @@ namespace MobWxUI.Helpers
             catch (Exception ex)
             {
                 // todo: log this exception
+                Debug.WriteLine("GetPointsAsync() exception: " + ex.Message);
+  
                 if (ex.InnerException != null)
                 {
                     // todo: log this exception
+                    Debug.WriteLine("GetPointsAsync() inner exception: " + ex.InnerException.Message);
                 }
             }
 

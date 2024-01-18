@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
-    public partial class CurrentForecastViewModel : BaseViewModel, IDisposable
+    public partial class CurrentConditionsViewModel : BaseViewModel, IDisposable
     {
 		#region Code source: CommunityToolkit Maui Sample ViewModels Converters ByteArrayToImageSourceConverterViewModel.cs
 		readonly WeakEventManager imageDownloadFailedEventManager = new();
@@ -133,10 +133,14 @@ namespace MobWxUI.ViewModels
 
 		public string ForecastLocation
 		{
-			get => _userSettingsParams.PointsResponse.RelativeLocation is null 
-				? "Current Conditions" 
-				: $"{_userSettingsParams.PointsResponse.RelativeLocation.GetSafeCityName()} Weather";
-        }
+			get {
+				return _userSettingsParams is null
+					? "No data"
+					: _userSettingsParams.PointsResponse.RelativeLocation is null
+						? "Current Conditions"
+						: $"{_userSettingsParams.PointsResponse.RelativeLocation.GetSafeCityName()} Weather";
+			} 
+		}
 
         public string ForecastName
 		{
@@ -148,7 +152,7 @@ namespace MobWxUI.ViewModels
 			get => "icons8_exclamation_mark_96.png";
         }
 
-		public CurrentForecastViewModel(
+		public CurrentConditionsViewModel(
 			IApiHelper apiHelper,
 			CurrentForecastCollection currentForecastCollection,
 			IUserSettingsParams userSettingsParams)
@@ -159,14 +163,17 @@ namespace MobWxUI.ViewModels
             _currentForecastCollection.Add(_userSettingsParams.CurrentForecast);
             LatestForecast = _currentForecastCollection.GetLatestForecast();
 
-			ConditionIcon = LatestForecast.Icon;
-			RightNow = LatestForecast.ShortForecast;
-			TempAndUnit = LatestForecast.Temp;
-			Rh = LatestForecast.RelativeHumidity!.ToString();
-			Dew = LatestForecast.Dewpoint!.ToString();
-			PoP = LatestForecast.ProbabilityOfPrecipitation!.ToString();
-			WindSpeedAndDirection = LatestForecast.Winds;
-			DetailedConditionsText = LatestForecast.DetailedForecast;
+			if (LatestForecast is not null)
+			{
+				ConditionIcon = LatestForecast.Icon;
+				RightNow = LatestForecast.ShortForecast;
+				TempAndUnit = LatestForecast.Temp;
+				Rh = LatestForecast.RelativeHumidity!.ToString();
+				Dew = LatestForecast.Dewpoint!.ToString();
+				PoP = LatestForecast.ProbabilityOfPrecipitation!.ToString();
+				WindSpeedAndDirection = LatestForecast.Winds;
+				DetailedConditionsText = LatestForecast.DetailedForecast;
+			}
         }
     }
 }
