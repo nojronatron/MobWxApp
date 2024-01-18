@@ -207,7 +207,7 @@
                 Value="Transparent" />
         <Setter Property="FontSize" Value="22" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="Padding" Value="8" />
+        <Setter Property="Padding" Value="4" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
