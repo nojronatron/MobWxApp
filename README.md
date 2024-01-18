@@ -13,6 +13,14 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 17-Jan-2024:
+
+- Refactored navigation to use Flyout, allowing user to select various pages in the app.
+- Updated Location discovery and UI validation.
+- Reworked filenames and MVVM structure a bit to reduce confusion.
+- Enable user to enter lat/lon even if the device already acquired Location from its sensors.
+- Enabled rotation support for Android.
+
 As of 6-Dec-2023:
 
 - Updated About page, including hyperlinks to project and dev sites.
@@ -45,8 +53,12 @@ As of 5-Dec-2023:
 
 Latest-to-oldest:
 
+- Part of development and testing now includes Ad-hoc publishing APK for side-load testing on physical Android devices.
+- Update UI to be responsive to window size, device orientation, and device type.
+- Dedicated function to get Android Location on startup.
+- Flyout navigation is overall navigation paradigm.
+- AppIcon for Android and Windows.
 - Add an about page to show app, developer information.
-- Move UI to TabBar views paradigm.
 - Update UI with color palette.
 - Update UI light/dark scheme (follows platform scheme).
 - Enable just-in-time downloading the NWS "Icon" image (current conditions image) when current condition page is loaded (right now it is a placeholder).
@@ -64,13 +76,10 @@ In No particular order:
 - Reconsider if Collections are really necessary for this app.
 - Implement NWS/NOAA API cache-friendly code (currently the code ignores caching requests).
 - Quick recall of forecast weather data periods (e.g. Tomorrow, Tomorrow night, Thursday, etc).
-- Navigation bar to: Enter location, show current weather, show list of forecasts, and any other pages.
 - Exception handling: Catch FeatureNotSupported, FeatureNotEnabled, and Permission Exception types.
-- Consider refactoring `MainPage.OnAppearing()` logic to a dedicated function.
-- Dedicate a class and function to process lattitude and longitude entries (curently this is duplicated code) (MainPage and SetLocation).
-- Ensure code installs, operates, and looks correct on at least one actual Android device/phone (not just the emulator).
-- Update UI to be responsive to window size, device orientation, and device type.
 - Various refactorings to improve code quality and readability.
+- Separate Current Conditions from 7-day Forecast data in the UI.
+- Design 7-day forecast page to consume currnet location and weather data.
 
 ### Stretch Goals
 

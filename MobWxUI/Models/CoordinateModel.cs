@@ -54,7 +54,7 @@
             }
         }
 
-        private static string LimitToFourDecimalPlaces(string coordinate)
+        public static string LimitToFourDecimalPlaces(string coordinate)
         {
             string coord = coordinate.Trim();
             string[] coordinateParts = coord.Split('.');

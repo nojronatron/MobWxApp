@@ -13,6 +13,14 @@ namespace MobWxUI.ViewModels
         public IAsyncRelayCommand ClickSetLocation { get; set; }
         public IAsyncRelayCommand ClickCityState { get; set; }
 
+        private bool _clickDiscoveredLocationEnabled;
+
+        public bool ClickDiscoveredLocationEnabled
+        {
+            get => _clickDiscoveredLocationEnabled; 
+            set => SetProperty(ref _clickDiscoveredLocationEnabled, value); 
+        }
+
         private string _informationMessage = string.Empty;
         public string InformationMessage
         {
@@ -35,20 +43,27 @@ namespace MobWxUI.ViewModels
         private string _locationSetMessage = string.Empty;
         public string LocationSetMessage
         {
-            get => LocationIsSet ? "Location set!" : "Set a location";
+            get => _locationSetMessage;
             set => SetProperty(ref _locationSetMessage, value);
         }
 
-        public bool LocationIsSet { get; set; } = false;
-
-        private bool _needsLocation = true;
-        public bool NeedsLocation
+        private bool _locationIsSet = false;
+        public bool LocationIsSet
         {
-            get { return _needsLocation; }
-            set { _needsLocation = value; }
+            get => _locationIsSet;
+            set
+            {
+                SetProperty(ref _locationIsSet, value);
+                SetProperty(ref _locationSetMessage, value ? "Location is set." : "Location is not set.");
+            }
         }
 
-        public string CityState { get; set; } = string.Empty;
+        private string _cityState = string.Empty;
+        public string CityState
+        {
+            get => _cityState;
+            set => SetProperty(ref _cityState, value);
+        }
 
         private string _latLonEntry = string.Empty;
         public string LatLonEntry
@@ -64,6 +79,7 @@ namespace MobWxUI.ViewModels
         {
             _apiHelper = apiHelper;
             _userSettingsParams = userSettingsParams;
+            ClickDiscoveredLocationEnabled = !DiscoveredLocation.Equals("unknown");
             ClickDiscoveredLocation = new AsyncRelayCommand(ClickDiscoveredLocationCommand);
             ClickSetLocation = new AsyncRelayCommand(ClickSetLocationCommand);
             ClickCityState = new AsyncRelayCommand(ClickCityStateCommand);
@@ -74,9 +90,10 @@ namespace MobWxUI.ViewModels
             Debug.WriteLine("Executing MainPageVM ClickDiscoveredLocationCommand()");
 
             // gather location data from DiscoveredLocation property and parse it
-            if (string.IsNullOrEmpty(DiscoveredLocation))
+            if (string.IsNullOrEmpty(DiscoveredLocation) || DiscoveredLocation.Equals("unknown"))
             {
                 Debug.WriteLine("DiscoveredLocation was null or empty. Returning.");
+                ClickDiscoveredLocationEnabled = false;
                 return;
             } else
             {
@@ -98,6 +115,7 @@ namespace MobWxUI.ViewModels
             // show a message on-screen stating the location has been set
             // when user uses Flyout to another page, the data is available
             Debug.WriteLine("Executing MainPageVM ClickSetLocationCommand()");
+
             if (string.IsNullOrEmpty(LatLonEntry) || LatLonEntry.IndexOf(',') == -1)
             {
                 InformationMessage = "Enter a valid latitude,longitude pair.";

@@ -1,4 +1,5 @@
 ﻿ using MobWxUI.Helpers;
+using MobWxUI.Models;
 using MobWxUI.ViewModels;
 using System.Diagnostics;
 
@@ -14,24 +15,34 @@ namespace MobWxUI.Views
             InitializeComponent();
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         protected override async void OnAppearing()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             base.OnAppearing();
+#if ANDROID32_0_OR_GREATER
             Debug.WriteLine("***** MainPage code-behind OnAppearing() is executing.");
             var discoveredLocation = await AndroidLocationHelper.GetLocation();
-            var plaintextLocation = $"{discoveredLocation.Latitude},{discoveredLocation.Longitude}";
 
             if (discoveredLocation is not null)
             {
+                var shortLat = CoordinateModel.LimitToFourDecimalPlaces(discoveredLocation.Latitude.ToString());
+                var shortLon = CoordinateModel.LimitToFourDecimalPlaces(discoveredLocation.Longitude.ToString());
+                var plaintextLocation = $"{shortLat},{shortLon}";
                 Debug.WriteLine($"***** MainPage OnAppearing() Android GetLocation() returned: {plaintextLocation}");
+                mainPageViewModel.DiscoveredLocation = plaintextLocation;
+                mainPageViewModel.LocationIsSet = true;
+                return;
             }
             else
             {
-                plaintextLocation = "unknown";
-                Debug.WriteLine($"***** MainPage OnAppearing() Android GetLocation returned null. Setting DiscoveredLocation to: {plaintextLocation}");
+                mainPageViewModel.DiscoveredLocation = "unknown";
+                Debug.WriteLine($"***** MainPage OnAppearing() Android GetLocation returned null. Setting DiscoveredLocation to: unknown");
+                return;
             }
-
-            mainPageViewModel.DiscoveredLocation = plaintextLocation;
+#endif
+            mainPageViewModel.DiscoveredLocation = "unknown";
+            mainPageViewModel.LocationIsSet = false;
         }
     }
 }
