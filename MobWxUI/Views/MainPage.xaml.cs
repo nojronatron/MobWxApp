@@ -41,7 +41,9 @@ namespace MobWxUI.Views
                 return;
             }
 #endif
+#pragma warning disable CS0162 // Unreachable code detected
             mainPageViewModel.DiscoveredLocation = "unknown";
+#pragma warning restore CS0162 // Unreachable code detected
             mainPageViewModel.LocationIsSet = false;
         }
     }

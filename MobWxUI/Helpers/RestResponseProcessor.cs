@@ -22,8 +22,10 @@ namespace MobWxUI.Helpers
             catch (Exception ex)
             {
                 Debug.WriteLine($"An error occurred while processing PointsResponse: {ex.Message}");
-                throw new ApplicationException("An error occurred while deserializeing the Json points response", ex);
+                //throw new ApplicationException("An error occurred while deserializeing the Json points response", ex);
             }
+
+            return new PointsResponseModel();
         }
 
         public static ForecastResponseModel? ProcessForecastResponse(string jsonForecastResponse)
@@ -40,8 +42,10 @@ namespace MobWxUI.Helpers
             catch (Exception ex)
             {
                 Debug.WriteLine($"An error occurred while processing ForecastResponse: {ex.Message}");
-                throw new ApplicationException("An error occurred while deserializing the Json forecast response", ex);
+                //throw new ApplicationException("An error occurred while deserializing the Json forecast response", ex);
             }
+
+            return new ForecastResponseModel();
         }
     }
 }

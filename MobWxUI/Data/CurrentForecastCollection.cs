@@ -61,7 +61,15 @@ namespace MobWxUI.Data
         public Period GetLatestForecast()
         {
             int index = GetIndexOfLatestForecastData();
-            return Items[index].Periods[0];
+
+            if (index < 0)
+            {
+                return new Period();
+            }
+            else
+            {
+                return Items[index].Periods[0];
+            }
         }
     }
 }

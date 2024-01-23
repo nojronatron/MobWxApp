@@ -24,6 +24,7 @@ public partial class CurrentConditionsView : BaseView<CurrentConditionsViewModel
 
     protected override void OnAppearing()
     {
+        // NOTE: Code cannot get here if the POINTS or FORECAST responses were null
         if (BindingContext.DownloadWxImageCommand.CanExecute(null))
         {
             BindingContext.DownloadWxImageCommand.Execute(BindingContext.ConditionIcon);
