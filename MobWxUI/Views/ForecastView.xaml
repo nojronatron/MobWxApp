@@ -20,7 +20,8 @@
 
     <CollectionView ItemsSource="{Binding Forecasts}"
                     SelectionMode="None"
-                    ItemSizingStrategy="MeasureFirstItem">
+                    ItemSizingStrategy="MeasureFirstItem"
+                    VerticalScrollBarVisibility="Always">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                     <controls:WeatherCard Name="{Binding Name}"

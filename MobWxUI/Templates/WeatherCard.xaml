@@ -5,7 +5,8 @@
              xmlns:local="clr-namespace:MobWxUI"
              >
 
-    <VerticalStackLayout VerticalOptions="Center">
+    <VerticalStackLayout VerticalOptions="Center"
+                         Margin="2">
 
         <Border Stroke="Gray"
                 StrokeThickness="2"
@@ -21,7 +22,7 @@
                 
                 <!-- Card Title like Today, Tonight, Tuesday, Tuesday Night, etc -->
                 <Label Text="{Binding Name}"
-                        Style="{StaticResource LocationName}"
+                        Style="{StaticResource ForecastDay}"
                         VerticalTextAlignment="Center"
                         HorizontalOptions="Fill" />
 
@@ -47,26 +48,41 @@
                     <VerticalStackLayout VerticalOptions="Center"
                                         Margin="4">
                         <!-- Forecast Data for this frame -->
-                        <Label Text="{Binding Temp}"
-                            Style="{StaticResource ForecastItem}"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill" />
-                        <Label Text="{Binding Dewpoint}"
-                            Style="{StaticResource ForecastItem}"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill" />
-                        <Label Text="{Binding ProbabilityOfPrecipitation}"
-                            Style="{StaticResource ForecastItem}"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill" />
-                        <Label Text="{Binding RelativeHumidity}"
-                            Style="{StaticResource ForecastItem}"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill" />
-                        <Label Text="{Binding Winds}"
-                            Style="{StaticResource ForecastItem}"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill" />
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Label Text="Temperature"
+                                   Style="{StaticResource ForecastItem}" />
+                            <Label Text="{Binding Temp}"
+                                   Style="{StaticResource ForecastItem}" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Label Text="DewPoint"
+                                   Style="{StaticResource Forecastitem}" />
+                            <Label Text="{Binding Dewpoint}"
+                                   Style="{StaticResource ForecastItem}" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Label Text="Precip:"
+                                   Style="{StaticResource Forecastitem}" />
+                            <Label Text="{Binding ProbabilityOfPrecipitation}"
+                                   Style="{StaticResource ForecastItem}" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Label Text="Humidity"
+                                   Style="{StaticResource Forecastitem}" />
+                            <Label Text="{Binding RelativeHumidity}"
+                                   Style="{StaticResource ForecastItem}" />
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout HorizontalOptions="Center">
+                            <Label Text="Winds"
+                                   Style="{StaticResource Forecastitem}" />
+                            <Label Text="{Binding Winds}"
+                                   Style="{StaticResource ForecastItem}" />
+                        </HorizontalStackLayout>
+
                     </VerticalStackLayout>
 
                 </HorizontalStackLayout>
