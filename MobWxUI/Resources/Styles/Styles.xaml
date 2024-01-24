@@ -179,7 +179,7 @@
     </Style>
 
     <Style x:Key="ForecastItem" TargetType="Label">
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="BackgroundColor"
@@ -240,7 +240,7 @@
     <Style TargetType="Label" x:Key="SubHeadline">
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
