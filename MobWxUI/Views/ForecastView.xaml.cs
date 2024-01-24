@@ -1,7 +1,4 @@
-using MobWxUI.Models;
 using MobWxUI.ViewModels;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace MobWxUI.Views;
 

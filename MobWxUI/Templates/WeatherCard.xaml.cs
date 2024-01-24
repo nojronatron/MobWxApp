@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace MobWxUI.Templates;
 
 public partial class WeatherCard : ContentView
@@ -66,8 +68,9 @@ public partial class WeatherCard : ContentView
 		set =>SetValue(IconProperty, value);
 	}
 
-	public WeatherCard()
+    public WeatherCard()
 	{
 		InitializeComponent();
+        Debug.WriteLine("WeatherCard Initialized - BindableProperties now exist.");
 	}
 }

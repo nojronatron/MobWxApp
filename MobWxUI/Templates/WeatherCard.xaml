@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobWxUI.Templates.WeatherCard"
              xmlns:local="clr-namespace:MobWxUI"
-             x:DataType="local:Templates.WeatherCard"
              >
 
     <VerticalStackLayout VerticalOptions="Center">
