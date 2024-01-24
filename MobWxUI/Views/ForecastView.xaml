@@ -16,22 +16,23 @@
         </ResourceDictionary>
     </views:BaseView.Resources>
 
-    <ListView ItemsSource="{Binding Forecasts}"
-              >
-        <ListView.ItemTemplate>
+    <CollectionView ItemsSource="{Binding Forecasts}"
+                    SelectionMode="None"
+                    ItemSizingStrategy="MeasureFirstItem">
+        <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>
                     <controls:WeatherCard Name="{Binding Name}"
-                                          Temp="{Binding Temp}"
-                                          Winds="{Binding Winds}"
-                                          Icon="{Binding Icon}"
-                                          ShortForecast="{Binding ShortForecast}"
-                                          RelativeHumidity="{Binding RelativeHumidity}"
-                                          Dewpoint="{Binding Dewpoint}"
-                                          ProbabilityOfPrecipitation="{Binding ProbabilityOfPrecipitation}"></controls:WeatherCard>
-                </ViewCell>
+                                        Temp="{Binding Temp}"
+                                        Winds="{Binding Winds}"
+                                        Icon="{Binding Icon}"
+                                        ShortForecast="{Binding ShortForecast}"
+                                        RelativeHumidity="{Binding RelativeHumidity}"
+                                        Dewpoint="{Binding Dewpoint}"
+                                        ProbabilityOfPrecipitation="{Binding ProbabilityOfPrecipitation}"
+                                        >
+                    </controls:WeatherCard>
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
 </views:BaseView>
