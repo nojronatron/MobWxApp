@@ -49,23 +49,19 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\mobwxlogo.png" Color="#3C29A2" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Images\hawaii_054_medium.png" Color="#512BD4" BaseSize="247,462" />
+		<MauiSplashScreen Include="Resources\Images\hawaii_satellite_260x260.png" Color="#512BD4" BaseSize="260,260" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\mobwxlogo.png" Color="#3C29A2" />
 	</ItemGroup>
 
 	<ItemGroup>
