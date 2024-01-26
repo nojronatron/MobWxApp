@@ -7,16 +7,9 @@
         public override string ToString()
         {
             string tempUnitCode = string.IsNullOrWhiteSpace(UnitCode) ? ":null" : UnitCode;
-            string? itemValue = Value == null ? "null" : Value.ToString();
+            string itemValue = Value?.ToString("F2") ?? "n/a  ";
             string fixedUnitCode = tempUnitCode.Substring(tempUnitCode.IndexOf(':') + 1);
-
-            if (itemValue != null && itemValue.IndexOf('.') < 0)
-            {
-                return $"{itemValue} {fixedUnitCode}";
-            }
-            
-            string trimmedValue = itemValue!.Substring(startIndex: 0, length:itemValue.IndexOf('.') + 3);
-            return $"{trimmedValue} {fixedUnitCode}";
+            return $"{itemValue} {fixedUnitCode}";
         }
     }
 }

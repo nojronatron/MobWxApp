@@ -19,10 +19,6 @@
         <Setter Property="StrokeThickness" Value="1"/>
     </Style>
 
-    <Style TargetType="BoxView">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-    </Style>
-
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource AltBackgroundLightThemeColor}, Dark={StaticResource AltBackgroundDarkThemeColor}}" />
@@ -134,8 +130,10 @@
 
     <Style TargetType="Frame">
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
+        <Setter Property="BorderColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="WidthRequest" Value="2" />
     </Style>
 
     <Style TargetType="ImageButton">
@@ -180,13 +178,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="AboutLabel" TargetType="Label">
+    <Style TargetType="Label" x:Key="AboutLabel">
         <Setter Property="Padding" Value="8" />
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextLightThemeColor}}" />
     </Style>
 
-    <Style x:Key="HyperLinkLabel" TargetType="Label">
+    <Style TargetType="Label" x:Key="HyperLinkLabel">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource AltForegroundLightThemeColor}, Dark={StaticResource AltForegroundLightThemeColor}}" />
         <Setter Property="BackgroundColor" 
@@ -196,13 +194,17 @@
         <Setter Property="Padding" Value="8" />
     </Style>
     
-    <Style TargetType="Span">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+    <Style TargetType="Span" x:Key="SpanForecastItem">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
     </Style>
 
     <Style TargetType="Label" x:Key="LocationName">
         <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextLightThemeColor}}" />
+                Value="{AppThemeBinding Light={StaticResource AltBackgroundDarkThemeColor}, Dark={StaticResource AltBackgroundLightThemeColor}}" />
         <Setter Property="BackgroundColor"
                 Value="Transparent" />
         <Setter Property="FontSize" Value="22" />
@@ -212,9 +214,30 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
+    <Style TargetType="Label" x:Key="ForecastDay">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource AltForegroundLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ForecastItem">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+        <Setter Property="Margin" Value="2,0" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
     <Style TargetType="Label" x:Key="InputLabel">
         <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextLightThemeColor}}" />
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="BackgroundColor"
                 Value="Transparent" />
         <Setter Property="FontSize" Value="16" />
@@ -224,22 +247,26 @@
     </Style>
 
     <Style TargetType="Label" x:Key="Headline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
         <Setter Property="FontSize" Value="32" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="Label" x:Key="SubHeadline">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource MidnightBlue}, Dark={StaticResource White}}" />
-        <Setter Property="FontSize" Value="24" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource AltBackgroundDarkThemeColor}, Dark={StaticResource AltBackgroundLightThemeColor}}" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
     <Style TargetType="ListView">
-        <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
-        <Setter Property="RefreshControlColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
+        <Setter Property="SeparatorColor" 
+                Value="{AppThemeBinding Light={StaticResource AltForegroundLightThemeColor}, Dark={StaticResource AltForegroundDarkThemeColor}}" />
+        <!--<Setter Property="RefreshControlColor" 
+                Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />-->
     </Style>
 
     <Style TargetType="Picker">

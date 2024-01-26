@@ -16,7 +16,7 @@
         string? Id { get; set; }
         string? ObservationStations { get; set; }
         string? RadarStation { get; set; }
-        RelativeLocation? RelativeLocation { get; set; }
+        RelativeLocation RelativeLocation { get; set; }
         string? TimeZone { get; set; }
         string? Type { get; set; }
     }

@@ -13,7 +13,7 @@
         public string? Forecast { get; set; } // API url
         public string? ForecastHourly { get; set; }  // API url
         public string? ObservationStations { get; set; } //  API url
-        public RelativeLocation? RelativeLocation { get; set; }
+        public RelativeLocation RelativeLocation { get; set; } = new();
         public string? ForecastZone { get; set; }    // API url
         public string? County { get; set; }  //  API url
         public string? FireWeatherZone { get; set; } //  API url

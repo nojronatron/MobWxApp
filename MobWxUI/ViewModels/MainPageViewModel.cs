@@ -145,6 +145,14 @@ namespace MobWxUI.ViewModels
             }
 
             var jsonPointsResponse = await _apiHelper.GetPointsAsync(_userSettingsParams.Coordinates);
+
+            if (string.IsNullOrEmpty(jsonPointsResponse))
+            {
+                InformationMessage = "Weather data could not be retreived try again later.";
+                Debug.WriteLine($"jsonPointsResponse is null or empty. Returning.");
+                return;
+            }
+
             var pointsResponse = RestResponseProcessor.ProcessPointsResponse(jsonPointsResponse);
 
             if (pointsResponse is null)
@@ -155,6 +163,14 @@ namespace MobWxUI.ViewModels
             }
 
             var jsonForecastResponse = await _apiHelper.GetForecastAsync(pointsResponse);
+
+            if(string.IsNullOrEmpty(jsonForecastResponse))
+            {
+                InformationMessage = "Weather data could not be retreived try again later.";
+                Debug.WriteLine($"jsonForecastResponse is null or empty. Returning.");
+                return;
+            }
+
             var forecastResponse = RestResponseProcessor.ProcessForecastResponse(jsonForecastResponse);
             
             if (forecastResponse is null || forecastResponse.Periods.Count() < 1)
@@ -164,8 +180,9 @@ namespace MobWxUI.ViewModels
                 return;
             }
             
-            _userSettingsParams.PointsResponse = pointsResponse;
-            _userSettingsParams.CurrentForecast = forecastResponse;
+            _userSettingsParams.AddPointsResponse(pointsResponse);
+            _userSettingsParams.AddForecastResponse(forecastResponse);
+            //_userSettingsParams.CurrentForecast = forecastResponse;
             InformationMessage = string.Empty;
             await Shell.Current.GoToAsync(nameof(CurrentConditionsView), true);
         }

@@ -104,7 +104,7 @@ namespace MobWxUI.ViewModels
 			get { return _windSpeedAndDirection; }
 			set { _windSpeedAndDirection = value; }
 		}
-        public Period LatestForecast { get; set; }
+		public Period LatestForecast { get; set; } = new Period();
         
 		private bool _detailedConditionsIsClosed;
 		public bool DetailedConditionsIsClosed
@@ -152,6 +152,7 @@ namespace MobWxUI.ViewModels
 			get => "icons8_exclamation_mark_96.png";
         }
 
+		// NOTE: The code cannot get here if POINTS or FORECAST responses are null
 		public CurrentConditionsViewModel(
 			IApiHelper apiHelper,
 			CurrentForecastCollection currentForecastCollection,

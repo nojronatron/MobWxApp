@@ -13,6 +13,11 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 26-Jan-2024:
+
+- Implemented Forecast view that displays 7-day forecast data.
+- Leverage CollectionView and templating to bind, display, and style the data.
+
 As of 17-Jan-2024:
 
 - Refactored navigation to use Flyout, allowing user to select various pages in the app.
@@ -53,6 +58,9 @@ As of 5-Dec-2023:
 
 Latest-to-oldest:
 
+- Separate Current Conditions from 7-day Forecast data in the UI.
+- Design 7-day forecast page that consumes current location and diplays weather data.
+- Collections will stay in the app to support observable data binding, ensureing up-to-date data and responsive UI.
 - Part of development and testing now includes Ad-hoc publishing APK for side-load testing on physical Android devices.
 - Update UI to be responsive to window size, device orientation, and device type.
 - Dedicated function to get Android Location on startup.
@@ -73,13 +81,10 @@ In No particular order:
 
 - Fix ObservableObject implementation to simplify code and ensure proper bindings.
 - Implement a local database e.g. SqlLite to store data.
-- Reconsider if Collections are really necessary for this app.
 - Implement NWS/NOAA API cache-friendly code (currently the code ignores caching requests).
-- Quick recall of forecast weather data periods (e.g. Tomorrow, Tomorrow night, Thursday, etc).
+- Quick recall of forecast weather data periods e.g. tomorrow, tomorrow night, etc.
 - Exception handling: Catch FeatureNotSupported, FeatureNotEnabled, and Permission Exception types.
 - Various refactorings to improve code quality and readability.
-- Separate Current Conditions from 7-day Forecast data in the UI.
-- Design 7-day forecast page to consume currnet location and weather data.
 
 ### Stretch Goals
 

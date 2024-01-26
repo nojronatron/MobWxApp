@@ -5,8 +5,6 @@ namespace MobWxUI
 {
     public partial class AppShell : Shell
     {
-        public ICommand ExitCommand { get; set; }
-
         public AppShell()
         {
             InitializeComponent();

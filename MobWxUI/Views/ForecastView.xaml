@@ -6,25 +6,36 @@
                 xmlns:views="clr-namespace:MobWxUI.Views"
                 xmlns:vm="clr-namespace:MobWxUI.ViewModels"
                 x:TypeArguments="vm:ForecastViewModel"
-                x:DataType="vm:ForecastViewModel"
+                xmlns:controls="clr-namespace:MobWxUI.Templates"
+                xmlns:models="clr-namespace:MobWxUI.Models"
+                Title="{Binding ForecastLocation}"
                 >
 
-    <ScrollView HorizontalOptions="Center"
-                Margin="20" >
+    <views:BaseView.Resources>
+        <ResourceDictionary>
+            <controls:WeatherCard x:Key="controls:WeatherCard" />
+            <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </views:BaseView.Resources>
 
-        <FlexLayout Direction="Column"
-                    JustifyContent="Start">
+    <CollectionView ItemsSource="{Binding Forecasts}"
+                    SelectionMode="None"
+                    ItemSizingStrategy="MeasureAllItems"
+                    VerticalScrollBarVisibility="Always">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                    <controls:WeatherCard Name="{Binding Name}"
+                                        Temp="{Binding Temp}"
+                                        Winds="{Binding Winds}"
+                                        Icon="{Binding Icon}"
+                                        ShortForecast="{Binding ShortForecast}"
+                                        RelativeHumidity="{Binding RelativeHumidity}"
+                                        Dewpoint="{Binding Dewpoint}"
+                                        ProbabilityOfPrecipitation="{Binding ProbabilityOfPrecipitation}"
+                                        >
+                    </controls:WeatherCard>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
-            <VerticalStackLayout>
-                <Label Text="{Binding ForecastLocation}"
-                       Style="{StaticResource LocationName}" />
-                <Label Text="Will Show Scrolled 7-day Forecast"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center" />
-            </VerticalStackLayout>
-
-        </FlexLayout>
-    
-    </ScrollView>
-    
 </views:BaseView>

@@ -42,14 +42,14 @@
                    />
 
                     <HorizontalStackLayout HorizontalOptions="Center">
-                        <Label Text="{Binding GitHubLabel}"
+                        <Label Style="{StaticResource AboutLabel}"
+                               Text="{Binding GitHubLabel}"
                                HorizontalTextAlignment="End"
-                               TextColor="{StaticResource TextLightThemeColor}"
                                VerticalOptions="Center"
                         />
-                        <Label Text="{Binding ProjectUrl}"
-                               Style="{StaticResource HyperLinkLabel}"
-                        >
+                        <Label Style="{StaticResource HyperLinkLabel}"
+                               Text="{Binding ProjectUrl}"
+                               >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TapCommand}"
                                                       CommandParameter="{Binding GitHubUrl}" />
@@ -59,13 +59,14 @@
 
                     <HorizontalStackLayout HorizontalOptions="Center"
                                             >
-                        <Label Text="{Binding LinkedInLabel}"
-                                HorizontalTextAlignment="End"
-                                TextColor="{StaticResource TextLightThemeColor}"
-                                VerticalOptions="Center"
+                        <Label Style="{StaticResource AboutLabel}"
+                               Text="{Binding LinkedInLabel}"
+                               HorizontalTextAlignment="End"
+                               VerticalOptions="Center"
                         />
-                        <Label Text="{Binding LinkedInShortUrl}"
-                               Style="{StaticResource HyperLinkLabel}">
+                        <Label Style="{StaticResource HyperLinkLabel}"
+                               Text="{Binding LinkedInShortUrl}"
+                               >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding TapCommand}"
                                                       CommandParameter="{Binding LinkedInUrl}" />

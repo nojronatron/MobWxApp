@@ -8,6 +8,8 @@ namespace MobWxUI.Helpers
         string CoordinatesFrom { get; set; }
         ForecastResponseModel CurrentForecast { get; set; }
         PointsResponseModel PointsResponse { get; set; }
+        List<Period> ForecastPeriods { get; set; }
+
         bool HasCoordinates { get; }
         bool HasPointsResponse { get; }
         bool HasForecastResponse { get; }
@@ -15,5 +17,8 @@ namespace MobWxUI.Helpers
         void AddCoordinates(string latitude, string longitude);
         void AddCoordinates(ICoordinateModel coordinates);
         void AddCoordinates(Location? location);
+
+        void AddPointsResponse(PointsResponseModel pointsResponse);
+        bool AddForecastResponse(ForecastResponseModel forecastResponse);
     }
 }
