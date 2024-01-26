@@ -178,22 +178,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ForecastItem" TargetType="Label">
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" 
-                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
-        <Setter Property="BackgroundColor"
-                Value="Transparent" />
-        <Setter Property="Margin" Value="8,0" />
-    </Style>
-
-    <Style x:Key="AboutLabel" TargetType="Label">
+    <Style TargetType="Label" x:Key="AboutLabel">
         <Setter Property="Padding" Value="8" />
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextLightThemeColor}}" />
     </Style>
 
-    <Style x:Key="HyperLinkLabel" TargetType="Label">
+    <Style TargetType="Label" x:Key="HyperLinkLabel">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource AltForegroundLightThemeColor}, Dark={StaticResource AltForegroundLightThemeColor}}" />
         <Setter Property="BackgroundColor" 
@@ -203,8 +194,12 @@
         <Setter Property="Padding" Value="8" />
     </Style>
     
-    <Style TargetType="Span">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+    <Style TargetType="Span" x:Key="SpanForecastItem">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
     </Style>
 
     <Style TargetType="Label" x:Key="LocationName">
@@ -230,6 +225,16 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
+    <Style TargetType="Label" x:Key="ForecastItem">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+        <Setter Property="Margin" Value="2,0" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
     <Style TargetType="Label" x:Key="InputLabel">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource TextLightThemeColor}, Dark={StaticResource TextDarkThemeColor}}" />
@@ -252,7 +257,7 @@
     <Style TargetType="Label" x:Key="SubHeadline">
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding Light={StaticResource AltBackgroundDarkThemeColor}, Dark={StaticResource AltBackgroundLightThemeColor}}" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>

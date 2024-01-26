@@ -5,82 +5,122 @@
              xmlns:local="clr-namespace:MobWxUI"
              >
 
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary Source="../Resources/Styles/Styles.xaml" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
     <VerticalStackLayout VerticalOptions="Center"
-                         Margin="2">
+                         >
 
-        <Border Stroke="Gray"
-                StrokeThickness="2"
-                Background="Transparent"
-                Padding="2"
-                HorizontalOptions="FillAndExpand">
+        <Border Padding="4"
+                >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="8,8,8,8" />
             </Border.StrokeShape>
 
-            <VerticalStackLayout VerticalOptions="Center"
-                                 Spacing="2">
+            <VerticalStackLayout 
+                >
                 
                 <!-- Card Title like Today, Tonight, Tuesday, Tuesday Night, etc -->
                 <Label Text="{Binding Name}"
-                        Style="{StaticResource ForecastDay}"
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="Fill" />
+                       Style="{StaticResource ForecastDay}"
+                       />
 
                 <!-- short forecast description -->
                 <Label Text="{Binding ShortForecast}"
-                        Style="{StaticResource SubHeadline}"
-                        VerticalTextAlignment="Center"
-                        HorizontalOptions="Fill" />
+                       Style="{StaticResource SubHeadline}"
+                       />
 
-                <HorizontalStackLayout VerticalOptions="Center"
-                                       HorizontalOptions="Start"
-                                       Margin="4"
-                                       Spacing="2">
+                <HorizontalStackLayout Spacing="4"
+                    >
 
                     <!-- Predominant weather icon -->
                     <Image Source="wxicon_placeholder_86x86.png"
-                            Aspect="AspectFit"
-                            WidthRequest="86"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill" />
+                           Aspect="AspectFit"
+                           WidthRequest="86"
+                           Margin="4"
+                           />
 
-
-                    <VerticalStackLayout VerticalOptions="Center"
-                                        Margin="4">
+                    <VerticalStackLayout Margin="4"
+                                         Spacing="2"
+                                         >
+                        
                         <!-- Forecast Data for this frame -->
-                        <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="Temperature"
-                                   Style="{StaticResource ForecastItem}" />
-                            <Label Text="{Binding Temp}"
-                                   Style="{StaticResource ForecastItem}" />
+                        <HorizontalStackLayout
+                            >
+                            <Label LineBreakMode="NoWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text=" Temp (F) "
+                                              Style="{StaticResource SpanForecastItem}" />
+                                        <Span Text="{Binding Temp}"
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </HorizontalStackLayout>
                         
                         <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="DewPoint"
-                                   Style="{StaticResource Forecastitem}" />
-                            <Label Text="{Binding Dewpoint}"
-                                   Style="{StaticResource ForecastItem}" />
+                            <Label LineBreakMode="NoWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Dew Point "
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                        <Span Text="{Binding Dewpoint}"
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="Precip:"
-                                   Style="{StaticResource Forecastitem}" />
-                            <Label Text="{Binding ProbabilityOfPrecipitation}"
-                                   Style="{StaticResource ForecastItem}" />
+                            <Label LineBreakMode="NoWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Precipitation "
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                        <Span Text="{Binding ProbabilityOfPrecipitation}"
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="Humidity"
-                                   Style="{StaticResource Forecastitem}" />
-                            <Label Text="{Binding RelativeHumidity}"
-                                   Style="{StaticResource ForecastItem}" />
+                            <Label LineBreakMode="NoWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Humidity "
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                        <Span Text="{Binding RelativeHumidity}"
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </HorizontalStackLayout>
 
                         <HorizontalStackLayout HorizontalOptions="Center">
-                            <Label Text="Winds"
-                                   Style="{StaticResource Forecastitem}" />
-                            <Label Text="{Binding Winds}"
-                                   Style="{StaticResource ForecastItem}" />
+                            <Label LineBreakMode="NoWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Winds "
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                        <Span Text="{Binding Winds}"
+                                              Style="{StaticResource SpanForecastItem}"
+                                              />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </HorizontalStackLayout>
 
                     </VerticalStackLayout>

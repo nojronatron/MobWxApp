@@ -8,19 +8,19 @@
                 x:TypeArguments="vm:ForecastViewModel"
                 xmlns:controls="clr-namespace:MobWxUI.Templates"
                 xmlns:models="clr-namespace:MobWxUI.Models"
+                Title="{Binding ForecastLocation}"
                 >
 
     <views:BaseView.Resources>
         <ResourceDictionary>
             <controls:WeatherCard x:Key="controls:WeatherCard" />
             <mct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
-            <ResourceDictionary Source="../Resources/Styles/Styles.xaml" />
         </ResourceDictionary>
     </views:BaseView.Resources>
 
     <CollectionView ItemsSource="{Binding Forecasts}"
                     SelectionMode="None"
-                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemSizingStrategy="MeasureAllItems"
                     VerticalScrollBarVisibility="Always">
         <CollectionView.ItemTemplate>
             <DataTemplate>
