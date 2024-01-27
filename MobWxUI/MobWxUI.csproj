@@ -73,6 +73,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\MobWxLibrary\WeatherLibrary.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\CurrentConditionsView.xaml.cs">
 	    <DependentUpon>CurrentConditionsView.xaml</DependentUpon>
 	  </Compile>

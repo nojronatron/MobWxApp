@@ -7,8 +7,8 @@ using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
-    public partial class CurrentConditionsViewModel : BaseViewModel, IDisposable
-    {
+	public partial class CurrentConditionsViewModel : BaseViewModel, IDisposable
+	{
 		#region Code source: CommunityToolkit Maui Sample ViewModels Converters ByteArrayToImageSourceConverterViewModel.cs
 		readonly WeakEventManager imageDownloadFailedEventManager = new();
 		readonly IApiHelper _apiHelper;
@@ -53,21 +53,21 @@ namespace MobWxUI.ViewModels
 		void OnImageDownloadFailed(in string message) =>
 			imageDownloadFailedEventManager.HandleEvent(this, message, nameof(ImageDownloadFailed));
 
-        public event EventHandler<string> ImageDownloadFailed
-        {
-            add => imageDownloadFailedEventManager.AddEventHandler(value);
-            remove => imageDownloadFailedEventManager.RemoveEventHandler(value);
-        }
-        public void Dispose()
-        {
-            WxImageByteArray = null;
-        }
-        #endregion 
+		public event EventHandler<string> ImageDownloadFailed
+		{
+			add => imageDownloadFailedEventManager.AddEventHandler(value);
+			remove => imageDownloadFailedEventManager.RemoveEventHandler(value);
+		}
+		public void Dispose()
+		{
+			WxImageByteArray = null;
+		}
+		#endregion
 
-        const string DefaultStringData = "N/A";
+		const string DefaultStringData = "N/A";
 		private readonly CurrentForecastCollection _currentForecastCollection;
 		private readonly IUserSettingsParams _userSettingsParams;
-        
+
 		private string _rightNow = DefaultStringData;
 		public string RightNow
 		{
@@ -105,14 +105,14 @@ namespace MobWxUI.ViewModels
 			set { _windSpeedAndDirection = value; }
 		}
 		public Period LatestForecast { get; set; } = new Period();
-        
+
 		private bool _detailedConditionsIsClosed;
 		public bool DetailedConditionsIsClosed
 		{
 			get => _detailedConditionsIsClosed;
 			set => SetProperty(ref _detailedConditionsIsClosed, value);
 		}
-        private string _detailedConditionsHeader = DefaultStringData;
+		private string _detailedConditionsHeader = DefaultStringData;
 		public string DetailedConditionsHeader
 		{
 			get => _detailedConditionsHeader;
@@ -139,13 +139,10 @@ namespace MobWxUI.ViewModels
 					: _userSettingsParams.PointsResponse.RelativeLocation is null
 						? "Current Conditions"
 						: $"{_userSettingsParams.PointsResponse.RelativeLocation.GetSafeCityName()} Weather";
-			} 
+			}
 		}
 
-        public string ForecastName
-		{
-			get => LatestForecast.Name!;
-		}
+		public string ForecastName { get; private set; } = DefaultStringData;
 
 		public string DefaultAlertIcon
 		{
@@ -166,6 +163,11 @@ namespace MobWxUI.ViewModels
 
 			if (LatestForecast is not null)
 			{
+				if (!string.IsNullOrEmpty(LatestForecast.Name))
+				{
+					ForecastName = LatestForecast.Name;
+				}
+
 				ConditionIcon = LatestForecast.Icon;
 				RightNow = LatestForecast.ShortForecast;
 				TempAndUnit = LatestForecast.Temp;

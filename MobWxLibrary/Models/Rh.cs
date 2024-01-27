@@ -1,9 +1,9 @@
-﻿namespace MobWxUI.Models
+﻿namespace WeatherLibrary.Models
 {
-    public class Pop
+    public class Rh
     {
         public string? UnitCode { get; set; }
-        public int? Value { get; set; }
+        public IntVal? Value { get; set; }
         public override string ToString()
         {
             string tempUnitCode = string.IsNullOrWhiteSpace(UnitCode) ? ":null" : UnitCode;
