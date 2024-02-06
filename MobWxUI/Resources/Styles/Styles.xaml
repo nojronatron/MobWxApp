@@ -221,7 +221,6 @@
         <Setter Property="FontSize" Value="22" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="Padding" Value="4" />
-        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
@@ -258,7 +257,6 @@
         <Setter Property="TextColor" 
                 Value="{AppThemeBinding Light={StaticResource AltBackgroundDarkThemeColor}, Dark={StaticResource AltBackgroundLightThemeColor}}" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
