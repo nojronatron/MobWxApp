@@ -88,40 +88,40 @@
                     Grid.Row="7"
                     Grid.Column="3"
                    />
-            <Label Text="Dewpoint"
-                   FontSize="Medium"
-                   HorizontalOptions="End"
-                   Grid.Row="8"
-                   Grid.Column="1"
-                   />
-            <Label Text="{Binding Dew}"
+            <Label Text="Precipitation" 
                     FontSize="Medium"
-                    HorizontalOptions="Start"
-                    Grid.Row="8"
-                    Grid.Column="3"
-                   />
-            <Label Text="Chance of Precip" 
-                   FontSize="Medium"
-                   HorizontalOptions="End"
-                   Grid.Row="10"
-                   Grid.Column="1"
-                   />
+                    HorizontalOptions="End"
+                    Grid.Row="10"
+                    Grid.Column="1"
+                    />
             <Label Text="{Binding PoP}"
                     FontSize="Medium"
                     HorizontalOptions="Start"
                     Grid.Row="10"
                     Grid.Column="3"
-                   />
-            <Label Text="Winds"
-                   FontSize="Medium"
-                   HorizontalOptions="End"
-                   Grid.Row="9"
-                   Grid.Column="1"
-                   />
+                    />
+            <Label Text="Wind"
+                    FontSize="Medium"
+                    HorizontalOptions="End"
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    />
             <Label Text="{Binding WindSpeedAndDirection}"
                     FontSize="Medium"
                     HorizontalOptions="Start"
                     Grid.Row="9"
+                    Grid.Column="3"
+                    />
+            <Label Text="Dewpoint"
+                    FontSize="Medium"
+                    HorizontalOptions="End"
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    />
+            <Label Text="{Binding Dew}"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    Grid.Row="8"
                     Grid.Column="3"
                    />
             <!-- End Current Conditions -->

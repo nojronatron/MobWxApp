@@ -21,7 +21,12 @@
     <CollectionView ItemsSource="{Binding Forecasts}"
                     SelectionMode="None"
                     ItemSizingStrategy="MeasureAllItems"
-                    VerticalScrollBarVisibility="Always">
+                    VerticalScrollBarVisibility="Always"
+                    HorizontalOptions="CenterAndExpand"
+                    >
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
             <DataTemplate>
                     <controls:WeatherCard Name="{Binding Name}"
