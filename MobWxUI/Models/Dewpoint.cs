@@ -6,10 +6,12 @@
         public double? Value { get; set; }
         public override string ToString()
         {
-            string tempUnitCode = string.IsNullOrWhiteSpace(UnitCode) ? ":null" : UnitCode;
-            string itemValue = Value?.ToString("F2") ?? "n/a  ";
-            string fixedUnitCode = tempUnitCode.Substring(tempUnitCode.IndexOf(':') + 1);
-            return $"{itemValue} {fixedUnitCode}";
+            char degreeSymbol = '°';
+            string fixedUnitCode = string.IsNullOrWhiteSpace(UnitCode) 
+                ? $"{degreeSymbol}?" 
+                : $"{degreeSymbol}{UnitCode.Substring(UnitCode.IndexOf(':')+4, 1).ToUpper()}";
+            string itemValue = Value?.ToString("F1") ?? "n/a  ";
+            return $"{itemValue}{fixedUnitCode}";
         }
     }
 }
