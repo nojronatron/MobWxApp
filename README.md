@@ -13,6 +13,12 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 5-Feb-2024:
+
+- Fixed some display and layout bugs.
+- Tested Release Deployment for Windows and Android.
+- Development on this project will be _on hold_ for a few weeks while working on other committments.
+
 As of 26-Jan-2024:
 
 - Implemented Forecast view that displays 7-day forecast data.
