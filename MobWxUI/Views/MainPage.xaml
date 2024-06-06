@@ -36,8 +36,7 @@
             <VerticalStackLayout>
                 <Label Text="Get a forecast for: City, State"
                        Style="{StaticResource InputLabel}" />
-                <Editor Placeholder="city name, ST"
-                        Text="{Binding CityState}" 
+                <Editor Text="{Binding CityState}" 
                         HorizontalTextAlignment="Center" />
                 <Button Text="Set Location (future)"
                         Command="{Binding ClickCityState}"
@@ -45,10 +44,9 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout>
-                <Label Text="Enter a location in decimal degrees"
+                <Label Text="Enter Coordinates (Seattle is 47.6036,-122.3306)"
                        Style="{StaticResource InputLabel}" />
-                <Editor Placeholder="Example: 34.567,-121.234"
-                        Text="{Binding LatLonEntry}"
+                <Editor Text="{Binding LatLonEntry}"
                         HorizontalTextAlignment="Center"
                         ToolTipProperties.Text="Enter coordinates in Decimal Degrees."
                         />
