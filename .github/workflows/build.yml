@@ -22,7 +22,7 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore Workloads
-      run: dotnet workload restore [./MobWxUI.csproj::TargetFramework=net8.0-windows10.0.19041.0]
+      run: dotnet workload restore MobWxUI
       working-directory: ./MobWxUI
 
     - name: Publish with .NET
