@@ -21,6 +21,9 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    - name: Restore Workloads
+      run: dotnet workload restore [./MobWxUI.csproj::TargetFramework=net8.0-windows10.0.19041.0]
+
     - name: Publish with .NET
       run: dotnet publish -f net8.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64 --no-restore --artifacts-path ./publish
 
