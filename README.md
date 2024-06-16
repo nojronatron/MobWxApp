@@ -13,6 +13,12 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 6-June-2024:
+
+- Enabled GH Build Action for Windows.
+- Updated accessibility, replacing placeholders with labels in UI.
+- Bump dependecies versions, app version.
+
 As of 5-Feb-2024:
 
 - Fixed some display and layout bugs.
@@ -98,6 +104,27 @@ In No particular order:
 - Sunset and Sunrise times e.g. Civil Twilight etc.
 - Moon phase, current and future significant dates.
 - A settings page to allow user to set preferences such as light/dark mode, location(s).
+
+## Prerequisites
+
+Android install and run:
+
+- Android 12 (API 32) or newer
+- Future: Google Play account to install from Play Store
+- Ability to side-load APK files for non-Store builds
+
+Windows install and run:
+
+- Windows 10 or 11
+- DotNET 8.0 or newer SDK and RunTime
+- Ability and local rights to install MSIX files
+
+Dev and Build:
+
+- Windows 10 or 11
+- Visual Studio 2022 (v17.10 or newer)
+- DotNet 8.0 SDK
+- Android Emulator(s) with Android 12.1+ and API 32 or newer and at least 1 GB of memory
 
 ## Credits and References
 
