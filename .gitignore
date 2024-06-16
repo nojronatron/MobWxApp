@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# ignore Android keystore files
+**/*.keystore
+
 # User-specific files
 *.rsuser
 *.suo
@@ -236,7 +239,7 @@ ClientBin/
 *.dbmdl
 *.dbproj.schemaview
 *.jfm
-*.pfx
+**/*.pfx
 *.publishsettings
 orleans.codegen.cs
 
