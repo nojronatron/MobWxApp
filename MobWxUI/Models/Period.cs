@@ -37,5 +37,6 @@
                     : $"{Temperature}{degreeSymbol}F and {TemperatureTrend}";
             }
         }
+        public byte[]? WxImageByteArray { get; set; } // this will store actual image data once it is fetched
     }
 }

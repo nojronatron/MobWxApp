@@ -5,6 +5,7 @@ namespace MobWxUI.Helpers
 {
     public class UserSettingsParams : IUserSettingsParams
     {
+        private readonly IApiHelper _apiHelper;
         public ICoordinateModel Coordinates { get; set; } = new CoordinateModel();
         public string CoordinatesFrom { get; set; }
         public PointsResponseModel PointsResponse { get; set; }
@@ -15,12 +16,13 @@ namespace MobWxUI.Helpers
         public bool HasPointsResponse => PointsResponse.Cwa != null;
         public bool HasForecastResponse => !string.IsNullOrWhiteSpace(CurrentForecast.Updated);
 
-        public UserSettingsParams()
+        public UserSettingsParams(IApiHelper apiHelper)
         {
             CoordinatesFrom = "n/a";
             PointsResponse = new PointsResponseModel();
             CurrentForecast = new ForecastResponseModel();
             ForecastPeriods = new List<Period>();
+            _apiHelper = apiHelper;
         }
 
         public void AddCoordinates(string latitude, string longitude)
@@ -44,7 +46,7 @@ namespace MobWxUI.Helpers
             PointsResponse = pointsResponse;
         }
 
-        public bool AddForecastResponse(ForecastResponseModel forecastResponse)
+        public async Task<bool> AddForecastResponseAsync(ForecastResponseModel forecastResponse)
         {
             if (forecastResponse is null)
             {
@@ -55,18 +57,33 @@ namespace MobWxUI.Helpers
             {
                 CurrentForecast = forecastResponse;
 
-                if (forecastResponse.Periods.Count() > 0)
+                if (forecastResponse.Periods.Length > 0)
                 {
                     ForecastPeriods = new List<Period>(forecastResponse.Periods);
+                    await GetWxPeriodIconAsync(ForecastPeriods);
                 }
                 else
                 {
-                    Debug.WriteLine($"AddForecastResponse: forecastResponse.Periods.Count() is 0.");
+                    Debug.WriteLine($"AddForecastResponse: There are no Forecast Periods in the respose.");
                     return false;
                 }
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Retrieves the weather images for each forecast period.
+        /// </summary>
+        /// <param name="forecastPeriods">The list of forecast periods.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
+        private async Task GetWxPeriodIconAsync(List<Period> forecastPeriods)
+        {
+            foreach (var period in forecastPeriods)
+            {
+                CancellationTokenSource token = new CancellationTokenSource();
+                period.WxImageByteArray = await _apiHelper.GetWeatherIconEnhancedAsync(period.Icon, token.Token);
+            }
         }
     }
 }

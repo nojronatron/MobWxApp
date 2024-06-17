@@ -21,24 +21,11 @@ namespace MobWxUI.ViewModels
 		async Task DownloadWxImage(CancellationToken token)
 		{
 			IsDownloadingImage = true;
-			var maximumDownloadTime = TimeSpan.FromSeconds(5);
-			var maximumDownloadTimeCTS = new CancellationTokenSource(maximumDownloadTime);
-			var minimumDownloadTime = TimeSpan.FromSeconds(1.5);
-			var minimumDownloadTimeTask = Task
-				.Delay(minimumDownloadTime, maximumDownloadTimeCTS.Token)
-				.WaitAsync(token);
 
 			try
 			{
-				var GetImageClient = _apiHelper.Apihelper;
-				GetImageClient.DefaultRequestHeaders.Clear();
-				GetImageClient.DefaultRequestHeaders.Add("Accept", "image/png");
-				GetImageClient.DefaultRequestHeaders.Add("User-Agent", "(exploring,jonrumsey.dev@gmail.com)");
-				WxImageByteArray = await GetImageClient
-					.GetByteArrayAsync(ConditionIcon, maximumDownloadTimeCTS.Token)
-					.WaitAsync(token)
-					.ConfigureAwait(false);
-				await minimumDownloadTimeTask.ConfigureAwait(false);
+				WxImageByteArray = await _apiHelper.GetWeatherIconEnhancedAsync(ConditionIcon, token)
+												   .ConfigureAwait(false);
 			}
 			catch (Exception ex)
 			{
