@@ -1,11 +1,12 @@
-﻿using MobWxUI.Helpers;
+﻿using CommunityToolkit.Mvvm.Input;
+using MobWxUI.Helpers;
 using MobWxUI.Models;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace MobWxUI.ViewModels
 {
-    public class ForecastViewModel : BaseViewModel
+    public partial class ForecastViewModel : BaseViewModel
     {
         private string _forecastLocation = "Location Placeholder";
 
@@ -27,26 +28,33 @@ namespace MobWxUI.ViewModels
         public ForecastViewModel(IUserSettingsParams userSettingsParams)
         {
             UserSettingsParams = userSettingsParams;
+        }
 
-            if (userSettingsParams is not null && userSettingsParams.PointsResponse is not null)
+        [RelayCommand]
+        private void Appearing()
+        {
+            try
             {
-                Debug.WriteLine($"User settings is not null and points response has data.");
                 ForecastLocation = UserSettingsParams.PointsResponse.RelativeLocation.GetSafeCityName();
-
-                if (userSettingsParams is not null && userSettingsParams.HasForecastResponse)
-                {
-                    Debug.WriteLine($"User settings is not null and it has a forecast response.");
-                    Forecasts = new ObservableCollection<Period>(UserSettingsParams.ForecastPeriods);
-                }
-                else
-                {
-                    Debug.WriteLine($"ForecastViewModel: userSettingsParams is null, or does not have a response to the Forecast request.");
-                    Forecasts = new ObservableCollection<Period>();
-                }
+                Forecasts = new ObservableCollection<Period>(UserSettingsParams.ForecastPeriods);
             }
-            else
+            catch (Exception ex)
             {
-                Debug.WriteLine($"ForecastViewModel: userSettingsParams is null.");
+                Debug.WriteLine($"ForecastViewModel Appearing error: {ex.Message}");
+            }
+        }
+
+        [RelayCommand]
+        private void Disappearing()
+        {
+            try
+            {
+                ForecastLocation = string.Empty;
+                Forecasts = new ObservableCollection<Period>();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ForecastViewModel Disappearing error: {ex.Message}");
             }
         }
     }
