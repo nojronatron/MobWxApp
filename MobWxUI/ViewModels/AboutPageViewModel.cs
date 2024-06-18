@@ -20,7 +20,7 @@ namespace MobWxUI.ViewModels
                 );
 
         public AboutPageViewModel() {
-            AppVersion = "Version: 1.1.0 Beta";
+            AppVersion = "Version: 1.1.1 Beta";
             DeveloperName = "Developer: Jon Rumsey (Nojronatron)";
             GitHubLabel = "Project Home: ";
             ProjectUrl = "github.com/nojronatron";
