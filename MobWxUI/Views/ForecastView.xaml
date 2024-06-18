@@ -18,6 +18,13 @@
         </ResourceDictionary>
     </views:BaseView.Resources>
 
+    <views:BaseView.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding AppearingCommand}"
+                                    EventName="Appearing" />
+        <mct:EventToCommandBehavior Command="{Binding DisappearingCommand}"
+                                    EventName="Disappearing" />
+    </views:BaseView.Behaviors>
+
     <CollectionView ItemsSource="{Binding Forecasts}"
                     SelectionMode="None"
                     ItemSizingStrategy="MeasureAllItems"

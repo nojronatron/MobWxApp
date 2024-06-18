@@ -35,7 +35,6 @@ namespace MobWxUI
             builder.Services.AddSingleton<ViewModels.AboutPageViewModel>();
 
             // collections
-            builder.Services.AddSingleton<Data.CurrentForecastCollection>();
 
 #if DEBUG
             builder.Logging.AddDebug();

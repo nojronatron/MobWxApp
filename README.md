@@ -13,6 +13,12 @@ The purpose of this app is to leverage the NOAA/NWS API to acquire current and f
 
 ## Project Status
 
+As of 17-June-2024:
+
+- Changing location properly updates Current and Forecast pages.
+- Forecast page now loads weather icons for each day.
+- Bumped version in About page.
+
 As of 6-June-2024:
 
 - Enabled GH Build Action for Windows.
