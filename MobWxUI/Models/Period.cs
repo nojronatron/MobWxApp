@@ -2,7 +2,7 @@
 {
     public class Period
     {
-        public int? Number { get; set; }
+        public int? Number { get; set; } // ordinal 1-14 for a 7 day forecast split into 12hr periods
         public string? Name { get; set; } // will be null for hourly
         public DateTimeOffset? StartTime { get; set; }
         public DateTimeOffset? EndTime { get; set; }
