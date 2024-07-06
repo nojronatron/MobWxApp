@@ -20,7 +20,7 @@ namespace MobWxUI.ViewModels
                 );
 
         public AboutPageViewModel() {
-            AppVersion = "Version: 1.0.0 alpha";
+            AppVersion = "Version: 1.1.0 Beta";
             DeveloperName = "Developer: Jon Rumsey (Nojronatron)";
             GitHubLabel = "Project Home: ";
             ProjectUrl = "github.com/nojronatron";
@@ -30,7 +30,7 @@ namespace MobWxUI.ViewModels
             LinkedInUrl = "https://www.linkedin.com/in/jonathan-rumsey-wa";
         }
 
-        private async Task BrowserOpen(string url)
+        private async Task BrowserOpen(string? url)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -45,7 +45,6 @@ namespace MobWxUI.ViewModels
             }
             catch (Exception ex)
             {
-                // no browser installed?
                 // todo: handle this error and notify the user
                 Debug.WriteLine(ex.Message);
             }

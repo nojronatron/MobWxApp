@@ -19,6 +19,6 @@ namespace MobWxUI.Helpers
         void AddCoordinates(Location? location);
 
         void AddPointsResponse(PointsResponseModel pointsResponse);
-        bool AddForecastResponse(ForecastResponseModel forecastResponse);
+        Task<bool> AddForecastResponseAsync(ForecastResponseModel forecastResponse);
     }
 }

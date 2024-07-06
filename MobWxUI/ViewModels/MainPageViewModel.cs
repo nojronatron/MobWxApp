@@ -127,7 +127,9 @@ namespace MobWxUI.ViewModels
             await GetPointsAndForecast();
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private async Task ClickCityStateCommand()
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             // utilize GeoLocation API to get Lat/Lon from City, State entry
             InformationMessage = "City State search is not yet implemented.";
@@ -181,8 +183,7 @@ namespace MobWxUI.ViewModels
             }
             
             _userSettingsParams.AddPointsResponse(pointsResponse);
-            _userSettingsParams.AddForecastResponse(forecastResponse);
-            //_userSettingsParams.CurrentForecast = forecastResponse;
+            await _userSettingsParams.AddForecastResponseAsync(forecastResponse);
             InformationMessage = string.Empty;
             await Shell.Current.GoToAsync(nameof(CurrentConditionsView), true);
         }
