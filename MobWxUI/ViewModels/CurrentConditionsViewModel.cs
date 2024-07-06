@@ -1,5 +1,4 @@
-﻿using MobWxUI.Data;
-using MobWxUI.Models;
+﻿using MobWxUI.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MobWxUI.Helpers;
 using CommunityToolkit.Mvvm.Input;
@@ -21,24 +20,11 @@ namespace MobWxUI.ViewModels
 		async Task DownloadWxImage(CancellationToken token)
 		{
 			IsDownloadingImage = true;
-			var maximumDownloadTime = TimeSpan.FromSeconds(5);
-			var maximumDownloadTimeCTS = new CancellationTokenSource(maximumDownloadTime);
-			var minimumDownloadTime = TimeSpan.FromSeconds(1.5);
-			var minimumDownloadTimeTask = Task
-				.Delay(minimumDownloadTime, maximumDownloadTimeCTS.Token)
-				.WaitAsync(token);
 
 			try
 			{
-				var GetImageClient = _apiHelper.Apihelper;
-				GetImageClient.DefaultRequestHeaders.Clear();
-				GetImageClient.DefaultRequestHeaders.Add("Accept", "image/png");
-				GetImageClient.DefaultRequestHeaders.Add("User-Agent", "(exploring,jonrumsey.dev@gmail.com)");
-				WxImageByteArray = await GetImageClient
-					.GetByteArrayAsync(ConditionIcon, maximumDownloadTimeCTS.Token)
-					.WaitAsync(token)
-					.ConfigureAwait(false);
-				await minimumDownloadTimeTask.ConfigureAwait(false);
+				WxImageByteArray = await _apiHelper.GetWeatherIconEnhancedAsync(ConditionIcon, token)
+												   .ConfigureAwait(false);
 			}
 			catch (Exception ex)
 			{
@@ -65,7 +51,6 @@ namespace MobWxUI.ViewModels
         #endregion 
 
         const string DefaultStringData = "N/A";
-		private readonly CurrentForecastCollection _currentForecastCollection;
 		private readonly IUserSettingsParams _userSettingsParams;
         
 		private string _rightNow = DefaultStringData;
@@ -155,25 +140,22 @@ namespace MobWxUI.ViewModels
 		// NOTE: The code cannot get here if POINTS or FORECAST responses are null
 		public CurrentConditionsViewModel(
 			IApiHelper apiHelper,
-			CurrentForecastCollection currentForecastCollection,
 			IUserSettingsParams userSettingsParams)
 		{
             _apiHelper = apiHelper;
             _userSettingsParams = userSettingsParams;
-            _currentForecastCollection = currentForecastCollection;
-            _currentForecastCollection.Add(_userSettingsParams.CurrentForecast);
-            LatestForecast = _currentForecastCollection.GetLatestForecast();
+			LatestForecast = _userSettingsParams.CurrentPeriodForecast;
 
 			if (LatestForecast is not null)
 			{
 				ConditionIcon = LatestForecast.Icon;
-				RightNow = LatestForecast.ShortForecast;
+				RightNow = LatestForecast.ShortForecast ?? DefaultStringData;
 				TempAndUnit = LatestForecast.Temp;
 				Rh = LatestForecast.RelativeHumidity!.ToString();
 				Dew = LatestForecast.Dewpoint!.ToString();
 				PoP = LatestForecast.ProbabilityOfPrecipitation!.ToString();
 				WindSpeedAndDirection = LatestForecast.Winds;
-				DetailedConditionsText = LatestForecast.DetailedForecast;
+				DetailedConditionsText = LatestForecast.DetailedForecast ?? DefaultStringData;
 			}
         }
     }
